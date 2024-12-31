@@ -3,7 +3,7 @@ import { WebsiteAnalyzer } from "../components/WebsiteAnalyzer";
 import { VoiceRecorder } from "../components/VoiceRecorder";
 import { SpeechEvaluation } from "../components/SpeechEvaluation";
 import { StepIndicator } from "../components/StepIndicator";
-import { KeyPoint, EvaluationResult } from "../types/types";
+import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 
 const Home = () => {
