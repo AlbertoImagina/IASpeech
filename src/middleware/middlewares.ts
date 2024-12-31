@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const token = "Njk3.VjSvOdFISjEw4uSdcRy7GoWC2GFPS_PrhZaGAsYzGp-I0gGIR9dQMW-kqwX4"
+const token = import.meta.env.VITE_TOKEN_APP;
 
 export const enviarVoz = async ({ pregunta, guiaCorreccion, archivo, dificultad }: { pregunta: string; guiaCorreccion: string; archivo: File; dificultad: number }) => {
   const formData = new FormData()
