@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Users } from "./types/Users";
 import { NavigateFunction } from "react-router-dom";
 import { AuthContext } from "./context/auth.context";
+import { ChakraProvider } from "@chakra-ui/react";
 
 const App = () => {
 
@@ -43,11 +44,13 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
-      <BrowserRouter>
-        <RuterController />
-      </BrowserRouter>
-    </AuthContext.Provider>
+    <ChakraProvider>
+      <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
+        <BrowserRouter>
+          <RuterController />
+        </BrowserRouter>
+      </AuthContext.Provider>
+    </ChakraProvider>
   );
 }
 

@@ -5,6 +5,9 @@ import { SpeechEvaluation } from "../components/SpeechEvaluation";
 import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
+import { useAuthContext } from "../context/auth.context";
+import { Button } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
 
@@ -12,6 +15,8 @@ const Home = () => {
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
+    const { logout } = useAuthContext();
+    const navigate = useNavigate();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
         setKeyPoints(points);
@@ -48,10 +53,13 @@ const Home = () => {
     return (
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
             <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
-                <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         Speech Trainer AI
                     </h1>
+                    <Button id="logout_button" onClick={() => logout(navigate)} px={8}>
+                        Cerrar Sesión
+                    </Button>
                 </div>
             </header>
 
