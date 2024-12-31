@@ -8,14 +8,14 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 import { useAuthenticate } from '../hooks/useAuthenticate';
 
-const Login = () => {
+function Login () {
     const [isLoading, setLoading] = useState(false)
     const { setUser, setAuth } = useAuthContext();
     const navigate = useNavigate();
     const toast = useToast();
     const {userLogin} = useAuthenticate();
 
-    // Esquema de validación Login
+
     const validationSchemaLogin = Yup.object({
       email: Yup.string()
         .email('Debe ser un correo válido')
@@ -127,4 +127,4 @@ const Login = () => {
     )
 }
 
-export {Login}
+export default Login

@@ -9,7 +9,7 @@ import { useAuthContext } from "../context/auth.context";
 import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {
+function Home () {
 
     const [step, setStep] = useState(1);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
@@ -105,4 +105,4 @@ const Home = () => {
     );
 }
 
-export { Home }
+export default Home 

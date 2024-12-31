@@ -5,7 +5,7 @@ import { useAuthenticate } from '../hooks/useAuthenticate';
 import { Link as RouterLink } from 'react-router-dom'
 import * as Yup from 'yup';
 
-const Register = () => {
+function Register () {
     const toast = useToast();
     const navigate = useNavigate();
     const {userRegister} = useAuthenticate()
@@ -225,4 +225,4 @@ const Register = () => {
         )
     }
 
-export {Register}
+export default Register

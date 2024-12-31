@@ -6,7 +6,7 @@ import { NavigateFunction } from "react-router-dom";
 import { AuthContext } from "./context/auth.context";
 import { ChakraProvider } from "@chakra-ui/react";
 
-const App = () => {
+function App () {
 
   const storedUser = localStorage.getItem("user");
   const userPerfil: Users = storedUser ? JSON.parse(storedUser) : null;
@@ -54,4 +54,4 @@ const App = () => {
   );
 }
 
-export { App };
+export default App
