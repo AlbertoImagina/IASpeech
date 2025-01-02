@@ -116,6 +116,7 @@ function Login() {
                                     p='5'
                                     type="submit"
                                     isLoading={isLoading}
+                                    _hover={{bgGradient: 'linear(to-l, #6645E7)', bgClip: "text"}}
                                 >
                                     Entrar
                                 </Button>
@@ -124,13 +125,13 @@ function Login() {
                                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                                     bgClip='text'
                                 >
-                                    Aún no tienes una cuenta,{' '}
+                                    ¿Aún no tienes una cuenta?,{' '}
                                     <Link
                                      as={RouterLink}
                                       _hover={{ textDecoration: "underline" }}
                                        to="/register"
                                         color="blue.500">
-                                        regístrate
+                                        Regístrate
                                     </Link>
                                 </Text>
                             </Box>

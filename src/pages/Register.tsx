@@ -232,20 +232,21 @@ function Register() {
                                         type="submit"
                                         bgGradient='linear(to-l, #A052EE, #6645E7)'
                                         color="white"
+                                        _hover={{bgGradient: 'linear(to-l, #6645E7)', bgClip: "text"}}
                                     >
                                         Registrarse
                                     </Button>
                                     <Text 
                                         fontSize='14'
                                     >
-                                        Si ya tienes una cuenta,{' '}
+                                        ¿Ya tienes una cuenta?,{' '}
                                         <Link
                                             as={RouterLink}
                                             _hover={{ textDecoration: "underline" }}
                                             to="/"
                                             color="blue.500"
                                         >
-                                            haz login aqui
+                                            Haz login aqui
                                         </Link>
 
                                     </Text>

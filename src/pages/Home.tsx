@@ -6,12 +6,12 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { useAuthContext } from "../context/auth.context";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex, Progress, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
-function Home () {
-
+function Home() {
     const [step, setStep] = useState(1);
+    const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
@@ -29,6 +29,7 @@ function Home () {
         const archivo = new File([audioBlob], "recording.webm", { type: audioBlob.type });
 
         try {
+            setIsLoading(true);
             const response = await enviarVoz({
                 pregunta: preguntaEmpresa,
                 guiaCorreccion: JSON.stringify(keyPoints),
@@ -38,7 +39,6 @@ function Home () {
 
             setData(response);
             setEvaluation(response);
-
         } catch (error) {
             console.error("Error al enviar el discurso:", error);
         }
@@ -46,6 +46,7 @@ function Home () {
 
     useEffect(() => {
         if (evaluation) {
+            setIsLoading(false);
             setStep(3);
         }
     }, [evaluation]);
@@ -57,7 +58,13 @@ function Home () {
                     <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
                         Speech Trainer AI
                     </h1>
-                    <Button id="logout_button" onClick={() => logout(navigate)} px={8}>
+                    <Button
+                        id="logout_button"
+                        px="8"
+                        bgGradient="linear(to-l, #A052EE, #6645E7)"
+                        color="white"
+                        onClick={() => logout(navigate)}
+                    >
                         Cerrar Sesión
                     </Button>
                 </div>
@@ -67,13 +74,50 @@ function Home () {
                 <StepIndicator currentStep={step} />
 
                 <div className="flex flex-col items-center space-y-8">
-                    {step === 1 && (
-                        <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 transition-all duration-300">
+                    {step === 1 && !isLoading && (
+                        <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
                             <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
                         </div>
                     )}
 
-                    {step >= 2 && (
+
+                    {isLoading && (
+                        <Flex
+                            direction="column"
+                            textAlign="center"
+                            justify="center"
+                            align="center"
+                            maxW="2xl"
+                            w="full"
+                            bg="whiteAlpha.800"
+                            rounded="2xl"
+                            shadow="xl"
+                            p="20"
+                            fontSize="20px"
+                        >
+                            <Text
+                                fontSize="xl"
+                                fontWeight="semibold"
+                                m="4"
+                                color="#302E81">
+                                Enviando tu discurso para corregir
+                            </Text>
+                            <Text
+                                fontSize="16px"
+                                my="5px"
+                                color="#302E81">
+                                Un segundo por favor...
+                            </Text>
+                            <Progress
+                                size="xs"
+                                isIndeterminate
+                                w="80%"
+                                mt="15px" />
+                        </Flex>
+                    )}
+
+
+                    {step === 2 && !isLoading && (
                         <div className="w-full flex flex-col items-center space-y-6">
                             <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
                                 <h2 className="text-xl font-semibold mb-4 text-indigo-900">Puntos clave:</h2>
@@ -94,9 +138,10 @@ function Home () {
                         </div>
                     )}
 
+
                     {step === 3 && evaluation && (
                         <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
-                            <SpeechEvaluation data={data as any} />
+                            <SpeechEvaluation data={data} />
                         </div>
                     )}
                 </div>
@@ -105,4 +150,4 @@ function Home () {
     );
 }
 
-export default Home 
+export default Home;
