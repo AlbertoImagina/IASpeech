@@ -238,7 +238,7 @@ function Register() {
                                     <Text 
                                         fontSize='14'
                                     >
-                                        Si ya tienes una cuenta
+                                        Si ya tienes una cuenta{' '}
                                         <Link
                                             as={RouterLink}
                                             _hover={{ textDecoration: "underline" }}

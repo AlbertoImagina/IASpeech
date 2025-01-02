@@ -125,7 +125,11 @@ function Login() {
                                     bgClip='text'
                                 >
                                     Aún no tienes una cuenta{' '}
-                                    <Link as={RouterLink} _hover={{ textDecoration: "underline" }} to="/register" color="blue.500">
+                                    <Link
+                                     as={RouterLink}
+                                      _hover={{ textDecoration: "underline" }}
+                                       to="/register"
+                                        color="blue.500">
                                         Registrate
                                     </Link>
                                 </Text>
