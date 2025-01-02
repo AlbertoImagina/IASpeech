@@ -8,21 +8,21 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 import { useAuthenticate } from '../hooks/useAuthenticate';
 
-function Login () {
+function Login() {
     const [isLoading, setLoading] = useState(false)
     const { setUser, setAuth } = useAuthContext();
     const navigate = useNavigate();
     const toast = useToast();
-    const {userLogin} = useAuthenticate();
+    const { userLogin } = useAuthenticate();
 
 
     const validationSchemaLogin = Yup.object({
-      email: Yup.string()
-        .email('Debe ser un correo válido')
-        .required('El correo es obligatorio'),
-      password: Yup.string()
-        .min(6, 'La contraseña debe tener al menos 6 caracteres')
-        .required('La contraseña es obligatoria'),
+        email: Yup.string()
+            .email('Debe ser un correo válido')
+            .required('El correo es obligatorio'),
+        password: Yup.string()
+            .min(6, 'La contraseña debe tener al menos 6 caracteres')
+            .required('La contraseña es obligatoria'),
     });
 
     const onSubmit = async (values: { email: string; password: string; }) => {
@@ -46,83 +46,97 @@ function Login () {
 
     return (
         <div>
-            <Flex  alignItems={'center'} justifyContent={'center'} flexDirection={'column'} height={'100vh'}>
+            <Flex
+                alignItems='center'
+                justifyContent='center'
+                flexDirection='column'
+                height='100vh'
+                boxShadow="xl"
+            >
                 <Text
-                    fontSize={28}
-                    mb={5}
+                    fontSize="24px"
+                    fontWeight="extrabold"
+                    mb='5'
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip="text"
                 >
                     Inicio de Sesión
                 </Text>
                 <Formik
-                  initialValues={{ email: '', password: ''}}
-                  validationSchema={validationSchemaLogin}
-                  validateOnSubmit={true}
-                  validateOnChange={false}
-                  validateOnBlur={false}
-                  onSubmit={onSubmit}
+                    initialValues={{ email: '', password: '' }}
+                    validationSchema={validationSchemaLogin}
+                    validateOnSubmit={true}
+                    validateOnChange={false}
+                    validateOnBlur={false}
+                    onSubmit={onSubmit}
                 >
-                  {props => (
-                    <form onSubmit={props.handleSubmit}>
-                        <Input 
-                            placeholder='email'
-                            id='email'
-                            type="email" 
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.email}
-                            name="email"
-                        />
-                        <Text
-                             opacity={props.errors.email ? 1 : 0}
-                             color="red.500"
-                             fontSize="12px"
-                             mt="3px"
-                        >
-                        {props.errors.email}
-                        </Text>
-
-                        <Input 
-                            placeholder='password'
-                            id='password'
-                            type="password" 
-                            onChange={props.handleChange}   
-                            onBlur={props.handleBlur}
-                            value={props.values.password}
-                            name="password"
-                        />
-
-                        <Text
-                             opacity={props.errors.password ? 1 : 0}
-                             color="red.500"
-                             fontSize="12px"
-                             mt="3px"
-                        >
-                            {props.errors.password}
-                        </Text>
-                        <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
-                            <Button 
-                                id='login_button'
-                                colorScheme='green' 
-                                p={5} 
-                                type="submit"
-                                isLoading={isLoading}
+                    {props => (
+                        <form onSubmit={props.handleSubmit}>
+                            <Input
+                                placeholder='Email'
+                                id='email'
+                                type="email"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.email}
+                                name="email"
+                            />
+                            <Text
+                                opacity={props.errors.email ? 1 : 0}
+                                color="red.500"
+                                fontSize="12px"
+                                mt="3px"
                             >
-                                Entrar
-                            </Button>
-                            <Text fontSize={14}>
-                                Aún no tienes una cuenta{' '}
-                                <Link as={RouterLink} _hover={{ textDecoration: "underline" }} to="/register" color="blue.500">
-                                    Registrarse
-                                </Link>
+                                {props.errors.email}
                             </Text>
-                        </Box>
-                        
-                    </form>
-                  )}
+
+                            <Input
+                                placeholder='Contraseña'
+                                id='password'
+                                type="password"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.password}
+                                name="password"
+                            />
+
+                            <Text
+                                opacity={props.errors.password ? 1 : 0}
+                                color="red.500"
+                                fontSize="12px"
+                                mt="3px"
+                            >
+                                {props.errors.password}
+                            </Text>
+                            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
+                                <Button
+                                    id='login_button'
+                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                                    color="white"
+                                    p='5'
+                                    type="submit"
+                                    isLoading={isLoading}
+                                >
+                                    Entrar
+                                </Button>
+                                <Text
+                                    fontSize='16'
+                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                                    bgClip='text'
+                                >
+                                    Aún no tienes una cuenta{' '}
+                                    <Link as={RouterLink} _hover={{ textDecoration: "underline" }} to="/register" color="blue.500">
+                                        Registrate
+                                    </Link>
+                                </Text>
+                            </Box>
+
+                        </form>
+                    )}
                 </Formik>
             </Flex>
 
-            
+
         </div>
     )
 }

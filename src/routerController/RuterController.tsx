@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
-import { Home } from "../pages/Home";
-import {Login} from "../pages/Login";
+import  Home  from "../pages/Home";
+import Login from "../pages/Login";
 import { useAuthContext } from "../context/auth.context";
 import { Navigate } from "react-router-dom";
-import { Register } from "../pages/Register";
+import  Register  from "../pages/Register";
 
 const RuterController = () => {
 
