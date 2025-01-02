@@ -80,13 +80,13 @@ function Register() {
                 justifyContent='center'
                 w='100vw'
                 h='100vh'
-                bgGradient='linear(to-l, #A052EE, #6645E7)'
-                bgClip="text"
             >
                 <Text
                     mb="5"
                     fontSize="24px"
                     fontWeight="extrabold"
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip="text"
                 >Registro</Text>
                 <Box
                     display='flex'
@@ -146,7 +146,7 @@ function Register() {
 
                                 <Input
                                     id="email"
-                                    placeholder="Email"
+                                    placeholder="Correo"
                                     type="email"
                                     onChange={props.handleChange}
                                     onBlur={props.handleBlur}
@@ -238,7 +238,7 @@ function Register() {
                                     <Text 
                                         fontSize='14'
                                     >
-                                        Si ya tienes una cuenta{' '}
+                                        Si ya tienes una cuenta,{' '}
                                         <Link
                                             as={RouterLink}
                                             _hover={{ textDecoration: "underline" }}

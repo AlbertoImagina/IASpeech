@@ -73,7 +73,7 @@ function Login() {
                     {props => (
                         <form onSubmit={props.handleSubmit}>
                             <Input
-                                placeholder='Email'
+                                placeholder='Correo'
                                 id='email'
                                 type="email"
                                 onChange={props.handleChange}
@@ -124,13 +124,13 @@ function Login() {
                                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                                     bgClip='text'
                                 >
-                                    Aún no tienes una cuenta{' '}
+                                    Aún no tienes una cuenta,{' '}
                                     <Link
                                      as={RouterLink}
                                       _hover={{ textDecoration: "underline" }}
                                        to="/register"
                                         color="blue.500">
-                                        Registrate
+                                        regístrate
                                     </Link>
                                 </Text>
                             </Box>
