@@ -87,7 +87,7 @@ function Register() {
                     fontWeight="extrabold"
                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                     bgClip="text"
-                >Registro</Text>
+                >Registrarse</Text>
                 <Formik
                     initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
                     validationSchema={validationSchemaRegister}
@@ -103,6 +103,7 @@ function Register() {
                                 flexDirection='column' 
                                 gap='3px' 
                                 w='50vw'
+                                maxW={400}
                                 >
                                 <Input
                                     id="name"
@@ -246,14 +247,14 @@ function Register() {
                     bgClip='text'
                     mt='10px'
                 >
-                    ¿Ya tienes una cuenta?,{' '}
+                    ¿Ya tienes una cuenta?{' '}
                     <Link
                         as={RouterLink}
                         _hover={{ textDecoration: "underline" }}
                         to="/"
                         color="blue.500"
                     >
-                        Haz login aqui
+                        Inicia sesión ahora
                     </Link>
 
                 </Text>

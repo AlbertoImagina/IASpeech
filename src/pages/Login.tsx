@@ -60,7 +60,7 @@ function Login() {
                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                     bgClip="text"
                 >
-                    Inicio de Sesión
+                    Iniciar Sesión
                 </Text>
                 <Formik
                     initialValues={{ email: '', password: '' }}
@@ -141,13 +141,13 @@ function Login() {
                     bgClip='text'
                     mt='10px'
                 >
-                    ¿Aún no tienes una cuenta?,{' '}
+                    ¿Aún no tienes una cuenta?{' '}
                     <Link
                         as={RouterLink}
                         _hover={{ textDecoration: "underline" }}
                         to="/register"
                         color="blue.500">
-                        Regístrate
+                        Regístrate ahora
                     </Link>
                 </Text>
             </Flex>
