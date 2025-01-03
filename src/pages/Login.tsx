@@ -136,7 +136,7 @@ function Login() {
                     )}
                 </Formik>
                 <Text
-                    fontSize='16'
+                    fontSize='14'
                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                     bgClip='text'
                     mt='10px'

@@ -242,6 +242,8 @@ function Register() {
                 </Formik>
                 <Text
                     fontSize='14'
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip='text'
                     mt='10px'
                 >
                     ¿Ya tienes una cuenta?,{' '}
