@@ -39,8 +39,8 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             type="url"
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://example.com"
-            className="w-full px-4 py-3 rounded-xl border border-indigo-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300"
+            placeholder="https://ejemplo.com"
+            className="w-full px-4 py-3 rounded-xl border border-indigo-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300 focus:outline-none"
             required
           />
           <button

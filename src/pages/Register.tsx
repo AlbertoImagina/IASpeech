@@ -88,23 +88,22 @@ function Register() {
                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                     bgClip="text"
                 >Registro</Text>
-                <Box
-                    display='flex'
-                    w='100vw'
-                    alignContent='center'
-                    justifyContent='center'
+                <Formik
+                    initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
+                    validationSchema={validationSchemaRegister}
+                    validateOnSubmit={true}
+                    validateOnChange={false}
+                    validateOnBlur={false}
+                    onSubmit={onSubmit}
                 >
-                    <Formik
-                        initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
-                        validationSchema={validationSchemaRegister}
-                        validateOnSubmit={true}
-                        validateOnChange={false}
-                        validateOnBlur={false}
-                        onSubmit={onSubmit}
-                    >
-                        {props => (
-                            <form
-                                onSubmit={props.handleSubmit}>
+                    {props => (
+                        <form onSubmit={props.handleSubmit}>
+                            <Box 
+                                display='flex' 
+                                flexDirection='column' 
+                                gap='3px' 
+                                w='50vw'
+                                >
                                 <Input
                                     id="name"
                                     placeholder="Nombre"
@@ -113,7 +112,6 @@ function Register() {
                                     onBlur={props.handleBlur}
                                     value={props.values.name}
                                     name="name"
-                                    width="400px"
                                 >
                                 </Input>
                                 <Text
@@ -232,30 +230,31 @@ function Register() {
                                         type="submit"
                                         bgGradient='linear(to-l, #A052EE, #6645E7)'
                                         color="white"
-                                        _hover={{bgGradient: 'linear(to-l, #6645E7)', bgClip: "text"}}
+                                        _hover={{ bgGradient: 'linear(to-l, #6645E7)', bgClip: "text" }}
                                     >
                                         Registrarse
                                     </Button>
-                                    <Text 
-                                        fontSize='14'
-                                    >
-                                        ¿Ya tienes una cuenta?,{' '}
-                                        <Link
-                                            as={RouterLink}
-                                            _hover={{ textDecoration: "underline" }}
-                                            to="/"
-                                            color="blue.500"
-                                        >
-                                            Haz login aqui
-                                        </Link>
 
-                                    </Text>
                                 </Box>
+                            </Box>
+                        </form>
+                    )}
+                </Formik>
+                <Text
+                    fontSize='14'
+                    mt='10px'
+                >
+                    ¿Ya tienes una cuenta?,{' '}
+                    <Link
+                        as={RouterLink}
+                        _hover={{ textDecoration: "underline" }}
+                        to="/"
+                        color="blue.500"
+                    >
+                        Haz login aqui
+                    </Link>
 
-                            </form>
-                        )}
-                    </Formik>
-                </Box>
+                </Text>
             </Flex>
         </>
     )

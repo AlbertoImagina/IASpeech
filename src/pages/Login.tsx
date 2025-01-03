@@ -72,73 +72,84 @@ function Login() {
                 >
                     {props => (
                         <form onSubmit={props.handleSubmit}>
-                            <Input
-                                placeholder='Correo'
-                                id='email'
-                                type="email"
-                                onChange={props.handleChange}
-                                onBlur={props.handleBlur}
-                                value={props.values.email}
-                                name="email"
-                            />
-                            <Text
-                                opacity={props.errors.email ? 1 : 0}
-                                color="red.500"
-                                fontSize="12px"
-                                mt="3px"
+                            <Box
+                                display='flex'
+                                flexDirection='column'
+                                gap='3px'
                             >
-                                {props.errors.email}
-                            </Text>
-
-                            <Input
-                                placeholder='Contraseña'
-                                id='password'
-                                type="password"
-                                onChange={props.handleChange}
-                                onBlur={props.handleBlur}
-                                value={props.values.password}
-                                name="password"
-                            />
-
-                            <Text
-                                opacity={props.errors.password ? 1 : 0}
-                                color="red.500"
-                                fontSize="12px"
-                                mt="3px"
-                            >
-                                {props.errors.password}
-                            </Text>
-                            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
-                                <Button
-                                    id='login_button'
-                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                    color="white"
-                                    p='5'
-                                    type="submit"
-                                    isLoading={isLoading}
-                                    _hover={{bgGradient: 'linear(to-l, #6645E7)', bgClip: "text"}}
-                                >
-                                    Entrar
-                                </Button>
+                                <Input
+                                    placeholder='Correo'
+                                    id='email'
+                                    type="email"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={props.values.email}
+                                    name="email"
+                                />
                                 <Text
-                                    fontSize='16'
-                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                    bgClip='text'
+                                    opacity={props.errors.email ? 1 : 0}
+                                    color="red.500"
+                                    fontSize="12px"
+                                    mt="3px"
                                 >
-                                    ¿Aún no tienes una cuenta?,{' '}
-                                    <Link
-                                     as={RouterLink}
-                                      _hover={{ textDecoration: "underline" }}
-                                       to="/register"
-                                        color="blue.500">
-                                        Regístrate
-                                    </Link>
+                                    {props.errors.email}
                                 </Text>
-                            </Box>
 
+                                <Input
+                                    placeholder='Contraseña'
+                                    id='password'
+                                    type="password"
+                                    onChange={props.handleChange}
+                                    onBlur={props.handleBlur}
+                                    value={props.values.password}
+                                    name="password"
+                                />
+
+                                <Text
+                                    opacity={props.errors.password ? 1 : 0}
+                                    color="red.500"
+                                    fontSize="12px"
+                                    mt="3px"
+                                >
+                                    {props.errors.password}
+                                </Text>
+                                <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
+                                    <Button
+                                        id='login_button'
+                                        bgGradient='linear(to-l, #A052EE, #6645E7)'
+                                        color="white"
+                                        p='5'
+                                        type="submit"
+                                        isLoading={isLoading}
+                                        _hover={{
+                                            bgGradient: 'linear(to-l, #6645E7)',
+                                            bgClip: "text"
+                                        }}
+                                    >
+                                        Entrar
+                                    </Button>
+
+                                </Box>
+
+                            </Box>
                         </form>
                     )}
                 </Formik>
+                <Text
+                    fontSize='16'
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip='text'
+                    mt='10px'
+                >
+                    ¿Aún no tienes una cuenta?,{' '}
+                    <Link
+                        as={RouterLink}
+                        _hover={{ textDecoration: "underline" }}
+                        to="/register"
+                        color="blue.500">
+                        Regístrate
+                    </Link>
+                </Text>
             </Flex>
 
 

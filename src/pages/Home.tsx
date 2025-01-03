@@ -6,8 +6,10 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { useAuthContext } from "../context/auth.context";
-import { Button, Flex, Progress, Text } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 
 function Home() {
     const [step, setStep] = useState(1);
@@ -55,15 +57,19 @@ function Home() {
         <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
             <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10">
                 <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8 flex items-center justify-between">
-                    <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
-                        Speech Trainer AI
-                    </h1>
+                    <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                        <Link to=''>Speech Trainer AI</Link>
+                    </div>
                     <Button
                         id="logout_button"
                         px="8"
                         bgGradient="linear(to-l, #A052EE, #6645E7)"
                         color="white"
                         onClick={() => logout(navigate)}
+                        _hover={{
+                            bgGradient: 'linear(to-l, #6645E7)',
+                            bgClip: "text",
+                        }}
                     >
                         Cerrar Sesión
                     </Button>
@@ -82,38 +88,7 @@ function Home() {
 
 
                     {isLoading && (
-                        <Flex
-                            direction="column"
-                            textAlign="center"
-                            justify="center"
-                            align="center"
-                            maxW="2xl"
-                            w="full"
-                            bg="whiteAlpha.800"
-                            rounded="2xl"
-                            shadow="xl"
-                            p="20"
-                            fontSize="20px"
-                        >
-                            <Text
-                                fontSize="xl"
-                                fontWeight="semibold"
-                                m="4"
-                                color="#302E81">
-                                Enviando tu discurso para corregir
-                            </Text>
-                            <Text
-                                fontSize="16px"
-                                my="5px"
-                                color="#302E81">
-                                Un segundo por favor...
-                            </Text>
-                            <Progress
-                                size="xs"
-                                isIndeterminate
-                                w="80%"
-                                mt="15px" />
-                        </Flex>
+                        <ModalCorrectSpeech />
                     )}
 
 
