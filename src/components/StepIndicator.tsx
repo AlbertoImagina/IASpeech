@@ -1,5 +1,19 @@
-import React from 'react';
-import { Mic, Globe, Award } from 'lucide-react';
+import { TbWorldWww } from "react-icons/tb";
+import { FaMicrophone } from "react-icons/fa";
+import { FaAward } from "react-icons/fa";
+
+import {
+  Box,
+  Step,
+  StepDescription,
+  StepIcon,
+  StepIndicator as StepIndicatorChakaraUi,
+  StepNumber,
+  StepSeparator,
+  StepStatus,
+  StepTitle,
+  Stepper
+} from '@chakra-ui/react'
 
 interface StepIndicatorProps {
   currentStep: number;
@@ -7,28 +21,43 @@ interface StepIndicatorProps {
 
 export function StepIndicator({ currentStep }: StepIndicatorProps) {
   const steps = [
-    { icon: Globe, label: 'Analizar web' },
-    { icon: Mic, label: 'Grabar discurso' },
-    { icon: Award, label: 'Evaluación' }
-  ];
+    { title: 'Paso 1', description: 'Analizar web' },
+    { title: 'Paso 2', description: 'Grabar discurso' },
+    { title: 'Paso 3', description: 'Evaluación' },
+  ]
+
 
   return (
-    <div className="flex justify-center mb-12">
-      <div className="flex items-center space-x-4">
-        {steps.map((item, index) => (
-          <React.Fragment key={item.label}>
-            {index > 0 && (
-              <div className="h-0.5 w-16 bg-gradient-to-r from-indigo-200 to-purple-200" />
-            )}
-            <div className={`flex items-center ${currentStep >= index + 1 ? 'text-indigo-600' : 'text-gray-400'}`}>
-              <div className="flex items-center justify-center w-12 h-12 rounded-full border-2 border-current bg-white shadow-sm transition-all duration-300">
-                <item.icon size={24} />
-              </div>
-              <span className="ml-3 font-medium">{item.label}</span>
-            </div>
-          </React.Fragment>
+      <Stepper size='lg' colorScheme="gray" index={currentStep} mb='30px' px="20px">
+        {steps.map((step, index) => (
+          <Step key={index}>
+            <StepIndicatorChakaraUi>
+              <StepStatus
+                complete={<StepIcon />}
+                incomplete={
+                  index === 0 ? <TbWorldWww /> :
+                  index === 1 ? <FaMicrophone /> :
+                  index === 2 ? <FaAward /> :
+                  <StepNumber />
+                }
+                active={
+                  index === 0 ? <TbWorldWww /> :
+                  index === 1 ? <FaMicrophone /> :
+                  index === 2 ? <FaAward /> :
+                  <StepNumber />
+                }
+              />
+              
+            </StepIndicatorChakaraUi>
+
+            <Box flexShrink='0'>
+              <StepTitle>{step.title}</StepTitle>
+              <StepDescription>{step.description}</StepDescription>
+            </Box>
+
+            <StepSeparator />
+          </Step>
         ))}
-      </div>
-    </div>
+      </Stepper>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Search, Globe } from 'lucide-react';
+import { Search } from 'lucide-react';
+import { TfiWorld } from "react-icons/tfi";
 
 interface WebsiteAnalyzerProps {
   onAnalysisComplete: (keyPoints: string[]) => void;
@@ -28,9 +29,9 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   return (
     <div className="w-full p-10 bg-gray-200 rounded-xl">
       <div className="flex items-center justify-center mb-8">
-        <Globe size={48} className="text-indigo-600" />
+      <TfiWorld size={48} className="text-indigo-900"/>
       </div>
-      <h2 className="text-xl font-semibold text-center mb-6 text-indigo-900">
+      <h2 className="text-xl font-semibold text-center mb-6 text-indigo-800">
         Introduce la URL para entrenar
       </h2>
       <form onSubmit={handleAnalyze} className="space-y-4">

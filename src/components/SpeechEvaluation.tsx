@@ -1,5 +1,6 @@
 
-import { CheckCircle, XCircle, Award } from 'lucide-react';
+import { CheckCircle, XCircle } from 'lucide-react';
+import { FaAward } from "react-icons/fa";
 
 interface SpeechEvaluationProps {
   puntuacion: number,
@@ -10,8 +11,9 @@ export function SpeechEvaluation({ data }: {data : SpeechEvaluationProps}) {
   return (
     <div className="w-full space-y-8">
       <div className="text-center">
-        <Award size={48} className="mx-auto text-indigo-600 mb-4" />
-        <h2 className="text-2xl font-bold text-indigo-900 mb-2">Evaluación de discurso</h2>
+
+        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" />
+        <h2 className="text-2xl font-bold text-indigo-800 mb-2">Evaluación de discurso</h2>
         <p className="text-gray-600">Detalles de tus respuestas y como lo has hecho:</p>
       </div>
       
