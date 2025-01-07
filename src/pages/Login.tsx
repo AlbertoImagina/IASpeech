@@ -78,6 +78,7 @@ function Login() {
                             display='flex'
                             flexDirection='column'
                             gap='3px'
+                            minW="268px"
                         >
                             <Input
                                 placeholder='Correo'
@@ -117,6 +118,7 @@ function Login() {
                             </Text>
                             <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
                                 <Button
+                                    w="100%"
                                     id='login_button'
                                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                                     color="white"
@@ -133,21 +135,26 @@ function Login() {
                     </form>
                 )}
             </Formik>
-            <Text
-                fontSize='14'
-                bgGradient='linear(to-l, #A052EE, #6645E7)'
-                bgClip='text'
-                mt='10px'
-            >
-                ¿Aún no tienes una cuenta?{' '}
+            <Box display='flex' flexDirection='column' mt='10px' gap='4px' alignItems='center'>
+                <Text
+                    fontSize='14'
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip='text'
+                    mt='10px'
+                >
+                    ¿Aún no tienes una cuenta?{' '}
+                </Text>
                 <Link
-                    as={RouterLink}
-                    _hover={{ textDecoration: "underline" }}
-                    to="/register"
-                    color="blue.500">
-                    Regístrate ahora
-                </Link>
-            </Text>
+                        as={RouterLink}
+                        _hover={{ textDecoration: "underline" }}
+                        to="/register"
+                        fontSize='12px'
+                        color='white'
+                        >
+                        Regístrate ahora
+                    </Link>
+            </Box>
+
         </Flex>
     )
 }
