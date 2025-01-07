@@ -57,7 +57,7 @@ function Home() {
         <div className="min-h-screen dark:bg-black">
             <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10 dark:bg-black">
                 <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
-                    <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                    <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
                         <Link to=''>Speech Trainer AI</Link>
                     </div>
                     <Button
