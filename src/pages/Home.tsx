@@ -55,14 +55,7 @@ function Home() {
     }, [evaluation]);
 
     return (
-        <motion.div className="min-h-screen dark:bg-black"
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.8,
-                ease: [0, 0.71, 0.2, 1.01]
-            }}
-        >
+        <>
             <header className="dark:bg-black">
                 <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
                     <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
@@ -74,10 +67,6 @@ function Home() {
                         bgGradient="linear(to-l, #A052EE, #6645E7)"
                         color="white"
                         onClick={() => logout(navigate)}
-                        _hover={{
-                            bgGradient: 'linear(to-l, #6645E7)',
-                            bgClip: "text",
-                        }}
                     >
                         Cerrar Sesión
                     </Button>
@@ -90,7 +79,17 @@ function Home() {
                 <div className="flex flex-col items-center space-y-8">
                     {step === 1 && !isLoading && (
                         <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6">
+                            <motion.div
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
+                            }}
+                        >
                             <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
+                        </motion.div>
+                            
                         </div>
                     )}
 
@@ -155,7 +154,7 @@ function Home() {
                     )}
                 </div>
             </main>
-        </motion.div>
+        </>
     );
 }
 

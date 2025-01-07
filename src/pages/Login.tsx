@@ -7,7 +7,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 import { useAuthenticate } from '../hooks/useAuthenticate';
-import { motion } from "motion/react"
 
 function Login() {
     const [isLoading, setLoading] = useState(false)
@@ -27,11 +26,14 @@ function Login() {
     });
 
     const onSubmit = async (values: { email: string; password: string; }) => {
+        setLoading(true)
         const response = await userLogin(values);
 
         if (!response?.auth) {
+            setLoading(false)
             return toast({
-                title: response?.error,
+                title: 'Error autenticación',
+                description: response?.error,
                 status: 'error',
             })
         }
@@ -46,122 +48,107 @@ function Login() {
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01]
-            }}
+        <Flex
+            alignItems='center'
+            justifyContent='center'
+            flexDirection='column'
+            height='100vh'
+            boxShadow="xl"
         >
-
-
-
-            <Flex
-                alignItems='center'
-                justifyContent='center'
-                flexDirection='column'
-                height='100vh'
-                boxShadow="xl"
+            <Text
+                fontSize="24px"
+                fontWeight="extrabold"
+                mb='5'
+                bgGradient='linear(to-l, #A052EE, #6645E7)'
+                bgClip="text"
             >
-                <Text
-                    fontSize="24px"
-                    fontWeight="extrabold"
-                    mb='5'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip="text"
-                >
-                    Iniciar Sesión
-                </Text>
-                <Formik
-                    initialValues={{ email: '', password: '' }}
-                    validationSchema={validationSchemaLogin}
-                    validateOnSubmit={true}
-                    validateOnChange={false}
-                    validateOnBlur={false}
-                    onSubmit={onSubmit}
-                >
-                    {props => (
-                        <form onSubmit={props.handleSubmit}>
-                            <Box
-                                display='flex'
-                                flexDirection='column'
-                                gap='3px'
+                Iniciar Sesión
+            </Text>
+            <Formik
+                initialValues={{ email: '', password: '' }}
+                validationSchema={validationSchemaLogin}
+                validateOnSubmit={true}
+                validateOnChange={false}
+                validateOnBlur={false}
+                onSubmit={onSubmit}
+            >
+                {props => (
+                    <form onSubmit={props.handleSubmit}>
+                        <Box
+                            display='flex'
+                            flexDirection='column'
+                            gap='3px'
+                        >
+                            <Input
+                                placeholder='Correo'
+                                id='email'
+                                type="email"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.email}
+                                name="email"
+                            />
+                            <Text
+                                opacity={props.errors.email ? 1 : 0}
+                                color="red.500"
+                                fontSize="12px"
+                                mt="3px"
                             >
-                                <Input
-                                    placeholder='Correo'
-                                    id='email'
-                                    type="email"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.email}
-                                    name="email"
-                                />
-                                <Text
-                                    opacity={props.errors.email ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
+                                {props.errors.email}
+                            </Text>
+
+                            <Input
+                                placeholder='Contraseña'
+                                id='password'
+                                type="password"
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.password}
+                                name="password"
+                            />
+
+                            <Text
+                                opacity={props.errors.password ? 1 : 0}
+                                color="red.500"
+                                fontSize="12px"
+                                mt="3px"
+                            >
+                                {props.errors.password}
+                            </Text>
+                            <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
+                                <Button
+                                    id='login_button'
+                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                                    color="white"
+                                    p='5'
+                                    type="submit"
+                                    isLoading={isLoading}
                                 >
-                                    {props.errors.email}
-                                </Text>
-
-                                <Input
-                                    placeholder='Contraseña'
-                                    id='password'
-                                    type="password"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.password}
-                                    name="password"
-                                />
-
-                                <Text
-                                    opacity={props.errors.password ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.password}
-                                </Text>
-                                <Box display={'flex'} alignItems={'center'} justifyContent={'center'} mt={5} gap={3} flexDirection={'column'}>
-                                    <Button
-                                        id='login_button'
-                                        bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                        color="white"
-                                        p='5'
-                                        type="submit"
-                                        isLoading={isLoading}
-                                    >
-                                        Entrar
-                                    </Button>
-
-                                </Box>
+                                    Entrar
+                                </Button>
 
                             </Box>
-                        </form>
-                    )}
-                </Formik>
-                <Text
-                    fontSize='14'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip='text'
-                    mt='10px'
-                >
-                    ¿Aún no tienes una cuenta?{' '}
-                    <Link
-                        as={RouterLink}
-                        _hover={{ textDecoration: "underline" }}
-                        to="/register"
-                        color="blue.500">
-                        Regístrate ahora
-                    </Link>
-                </Text>
-            </Flex>
 
-
-        </motion.div>
+                        </Box>
+                    </form>
+                )}
+            </Formik>
+            <Text
+                fontSize='14'
+                bgGradient='linear(to-l, #A052EE, #6645E7)'
+                bgClip='text'
+                mt='10px'
+            >
+                ¿Aún no tienes una cuenta?{' '}
+                <Link
+                    as={RouterLink}
+                    _hover={{ textDecoration: "underline" }}
+                    to="/register"
+                    color="blue.500">
+                    Regístrate ahora
+                </Link>
+            </Text>
+        </Flex>
     )
 }
 
