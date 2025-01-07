@@ -12,10 +12,11 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
+import { useColorModeValue } from '@chakra-ui/react';
 
 function Home() {
     const [step, setStep] = useState(0);
-
+    const bgColor = useColorModeValue('white', '#1D222D');
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -90,7 +91,7 @@ function Home() {
 
                 <div className="flex flex-col items-center space-y-8">
                     {step === 0 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12 bg-[#1D222D]">
+                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12" style={{ backgroundColor: bgColor }}>
                             <motion.div
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: 1, scale: 1 }}

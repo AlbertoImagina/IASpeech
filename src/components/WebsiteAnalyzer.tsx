@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
-import { Flex } from '@chakra-ui/react';
+import { Flex, Input, Text } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
 
 interface WebsiteAnalyzerProps {
@@ -31,28 +31,25 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   return (
     <Flex flexDirection='column' className='darkMode'>
       <div className="flex items-center justify-center mb-8">
-        <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'}/>
+        <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'} />
       </div>
-      <h2 className="text-[20px] font-semibold text-center mb-6 text-gray-200">
-        Introduce la URL para entrenar
-      </h2>
+      <Text fontSize="20px" marginBottom={6} textAlign="center">Introduce la URL para entrenar</Text>
       <form onSubmit={handleAnalyze} className="space-y-4">
         <div className="relative">
-          <input
-            type="url"
+          <Input
+            type='url'
+            py={6}
             value={url}
             onChange={(e) => setUrl(e.target.value)}
-            placeholder="https://ejemplo.com"
-            className="w-full px-4 py-3 rounded-xl border border-gray focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-transparent backdrop-blur-sm transition-all duration-300 focus:outline-none text-white"
+            placeholder='https://ejemplo.com'
             required
           />
-
           <button
             type="submit"
             disabled={loading}
             className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-2 rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <Search size={20} />
+            <Search size={18} />
           </button>
         </div>
       </form>
@@ -60,7 +57,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       {loading && (
         <div className="mt-8 text-center">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
-          <p className="mt-4 text-indigo-900">Analizando contenido...</p>
+          <Text>Analizando contenido...</Text>
         </div>
       )}
     </Flex>
