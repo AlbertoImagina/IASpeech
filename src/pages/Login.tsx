@@ -135,7 +135,13 @@ function Login() {
                     </form>
                 )}
             </Formik>
-            <Box display='flex' flexDirection='column' mt='10px' gap='4px' alignItems='center'>
+            <Box
+                display='flex'
+                flexDirection='column'
+                mt='10px'
+                gap='4px'
+                alignItems='center'
+            >
                 <Text
                     fontSize='14'
                     bgGradient='linear(to-l, #A052EE, #6645E7)'
@@ -145,14 +151,14 @@ function Login() {
                     ¿Aún no tienes una cuenta?{' '}
                 </Text>
                 <Link
-                        as={RouterLink}
-                        _hover={{ textDecoration: "underline" }}
-                        to="/register"
-                        fontSize='12px'
-                        color='white'
-                        >
-                        Regístrate ahora
-                    </Link>
+                    as={RouterLink}
+                    _hover={{ textDecoration: "underline" }}
+                    to="/register"
+                    fontSize='12px'
+                    color='white'
+                >
+                    Regístrate ahora
+                </Link>
             </Box>
 
         </Flex>

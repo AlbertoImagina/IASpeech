@@ -107,8 +107,7 @@ function Register() {
                             display='flex'
                             flexDirection='column'
                             gap='3px'
-                            w='50vw'
-                            maxW={400}
+                            minW="300px"
                         >
                             <Input
                                 id="name"
@@ -237,6 +236,7 @@ function Register() {
                                     bgGradient='linear(to-l, #A052EE, #6645E7)'
                                     color="white"
                                     isLoading={isLoading}
+                                    w="100%"
                                 >
                                     Registrarse
                                 </Button>
@@ -246,23 +246,32 @@ function Register() {
                     </form>
                 )}
             </Formik>
-            <Text
-                fontSize='14'
-                bgGradient='linear(to-l, #A052EE, #6645E7)'
-                bgClip='text'
-                mt='10px'
+            <Box
+                display="flex"
+                flexDirection="column"
+                gap='4px'
+                alignItems='center'
+                mt="10px"
             >
-                ¿Ya tienes una cuenta?{' '}
+                <Text
+                    fontSize='14'
+                    bgGradient='linear(to-l, #A052EE, #6645E7)'
+                    bgClip='text'
+                    mt='10px'
+                >
+                    ¿Ya tienes una cuenta?{' '}
+                </Text>
                 <Link
                     as={RouterLink}
                     _hover={{ textDecoration: "underline" }}
                     to="/"
-                    color="blue.500"
+                    color="white"
+                    fontSize="12px"
                 >
                     Inicia sesión ahora
                 </Link>
+            </Box>
 
-            </Text>
         </Flex>
     )
 }
