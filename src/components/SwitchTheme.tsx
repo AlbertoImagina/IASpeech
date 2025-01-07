@@ -1,27 +1,13 @@
 import { Button } from "@chakra-ui/react";
-import { useState, useEffect } from "react";
 import { FiSun, FiMoon } from "react-icons/fi";
+import { useColorMode } from '@chakra-ui/react';
 
 function SwitchTheme() {
-    const [mode, setMode] = useState(false)
-
-    useEffect(() => {
-        const savedMode = localStorage.getItem('chakra-ui-color-mode');
-        if (savedMode) {
-            setMode(savedMode === 'dark');
-        }
-    }, []);
-
-    const handleMode = () => {
-        const newMode = !mode;
-        setMode(newMode);
-        localStorage.setItem('chakra-ui-color-mode', newMode ? 'dark' : 'light');
-        window.location.reload();
-    }
+    const { colorMode, toggleColorMode } = useColorMode();
 
     return (
         <>
-            <Button mr='10px' onClick={handleMode}> {mode ? <FiSun /> : <FiMoon />}</Button>
+            <Button mr='10px' onClick={toggleColorMode}> {colorMode === 'light' ? <FiSun /> : <FiMoon />}</Button>
         </>
     )
 }
