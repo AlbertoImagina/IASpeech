@@ -81,7 +81,7 @@ function Home() {
 
                 <div className="flex flex-col items-center space-y-8">
                     {step === 1 && !isLoading && (
-                        <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+                        <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6">
                             <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
                         </div>
                     )}

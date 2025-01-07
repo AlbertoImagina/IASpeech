@@ -26,7 +26,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   };
 
   return (
-    <div className="w-full p-10 bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-10 rounded-xl">
+    <div className="w-full p-10 bg-gray-200 rounded-xl">
       <div className="flex items-center justify-center mb-8">
         <Globe size={48} className="text-indigo-600" />
       </div>

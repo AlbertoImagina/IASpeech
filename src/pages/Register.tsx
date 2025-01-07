@@ -231,7 +231,6 @@ function Register() {
                                         type="submit"
                                         bgGradient='linear(to-l, #A052EE, #6645E7)'
                                         color="white"
-                                        _hover={{ bgGradient: 'linear(to-l, #6645E7)', bgClip: "text" }}
                                     >
                                         Registrarse
                                     </Button>

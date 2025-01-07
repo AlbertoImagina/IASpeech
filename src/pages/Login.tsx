@@ -121,10 +121,6 @@ function Login() {
                                         p='5'
                                         type="submit"
                                         isLoading={isLoading}
-                                        _hover={{
-                                            bgGradient: 'linear(to-l, #6645E7)',
-                                            bgClip: "text"
-                                        }}
                                     >
                                         Entrar
                                     </Button>
