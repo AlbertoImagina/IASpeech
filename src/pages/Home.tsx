@@ -57,7 +57,7 @@ function Home() {
     return (
         <>
             <header className="dark:bg-black">
-                <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
+                <div className=" text-[24px] mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
                     <div onClick={() => setStep(0)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
                         <Link to=''>Speech Trainer AI</Link>
                     </div>
@@ -66,6 +66,7 @@ function Home() {
                         px="8"
                         bgGradient="linear(to-l, #A052EE, #6645E7)"
                         color="white"
+                        fontSize="18px"
                         onClick={() => logout(navigate)}
                     >
                         Cerrar Sesión
@@ -78,7 +79,7 @@ function Home() {
 
                 <div className="flex flex-col items-center space-y-8">
                     {step === 0 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12">
+                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12 bg-[#1D222D]">
                             <motion.div
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}

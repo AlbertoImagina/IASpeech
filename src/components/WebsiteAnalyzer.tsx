@@ -33,7 +33,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       <div className="flex items-center justify-center mb-8">
         <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'}/>
       </div>
-      <h2 className="text-xl font-semibold text-center mb-6 text-gray-200">
+      <h2 className="text-[20px] font-semibold text-center mb-6 text-gray-200">
         Introduce la URL para entrenar
       </h2>
       <form onSubmit={handleAnalyze} className="space-y-4">
