@@ -111,7 +111,7 @@ function Home() {
 
 
                     {step === 2 && !isLoading && (
-                        <motion.div className="w-full flex flex-col items-center space-y-6"
+                        <motion.div className="w-full flex flex-col items-center space-y-10"
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{

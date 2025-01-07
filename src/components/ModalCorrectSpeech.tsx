@@ -33,7 +33,7 @@ const ModalCorrectSpeech = () => {
                 isIndeterminate
                 w="80%"
                 mt="15px" 
-                color='red'
+                colorScheme="red"
                 />
         </Flex>
     )

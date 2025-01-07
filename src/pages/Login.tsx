@@ -7,7 +7,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 import { useAuthenticate } from '../hooks/useAuthenticate';
-import { motion } from "motion/react"
 
 function Login() {
     const [isLoading, setLoading] = useState(false)
@@ -46,18 +45,7 @@ function Login() {
     }
 
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{
-                duration: 0.8,
-                delay: 0.5,
-                ease: [0, 0.71, 0.2, 1.01]
-            }}
-        >
-
-
-
+        <div>
             <Flex
                 alignItems='center'
                 justifyContent='center'
@@ -66,11 +54,9 @@ function Login() {
                 boxShadow="xl"
             >
                 <Text
-                    fontSize="24px"
+                    layerStyle='baseText'
                     fontWeight="extrabold"
-                    mb='5'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip="text"
+                    fontSize="24px"
                 >
                     Iniciar Sesión
                 </Text>
@@ -161,7 +147,7 @@ function Login() {
             </Flex>
 
 
-        </motion.div>
+        </div >
     )
 }
 

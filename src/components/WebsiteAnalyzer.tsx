@@ -32,7 +32,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       <TfiWorld size={48} className="text-indigo-900"/>
       </div>
       <h2 className="text-xl font-semibold text-center mb-6 text-indigo-800">
-        Introduce la URL para entrenar
+        Introduce la URL para empezar
       </h2>
       <form onSubmit={handleAnalyze} className="space-y-4">
         <div className="relative">
