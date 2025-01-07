@@ -5,7 +5,7 @@ import { Users } from "./types/Users";
 import { NavigateFunction } from "react-router-dom";
 import { AuthContext } from "./context/auth.context";
 import { ChakraProvider } from "@chakra-ui/react";
-import theme  from "../colorModeScript"
+import theme from "./ui/theme";
 
 
 function App () {

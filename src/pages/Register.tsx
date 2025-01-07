@@ -90,8 +90,7 @@ function Register() {
                 mb="5"
                 fontSize="24px"
                 fontWeight="extrabold"
-                bgGradient='linear(to-l, #A052EE, #6645E7)'
-                bgClip="text"
+                layerStyle='textGradient'
             >Registrarse</Text>
             <Formik
                 initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
@@ -233,8 +232,7 @@ function Register() {
                                 <Button
                                     id="register_button"
                                     type="submit"
-                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                    color="white"
+                                    layerStyle='buttonGradient'
                                     isLoading={isLoading}
                                     w="100%"
                                 >
@@ -255,8 +253,7 @@ function Register() {
             >
                 <Text
                     fontSize='14'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip='text'
+                    layerStyle='textGradient'
                     mt='10px'
                 >
                     ¿Ya tienes una cuenta?{' '}
@@ -265,7 +262,7 @@ function Register() {
                     as={RouterLink}
                     _hover={{ textDecoration: "underline" }}
                     to="/"
-                    color="white"
+                    layerStyle='textLink'
                     fontSize="12px"
                 >
                     Inicia sesión ahora

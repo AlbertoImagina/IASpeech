@@ -56,11 +56,9 @@ function Login() {
             boxShadow="xl"
         >
             <Text
-                fontSize="24px"
-                fontWeight="extrabold"
+                textStyle='primaryText'
                 mb='5'
-                bgGradient='linear(to-l, #A052EE, #6645E7)'
-                bgClip="text"
+                layerStyle='textGradient'
             >
                 Iniciar Sesión
             </Text>
@@ -120,8 +118,7 @@ function Login() {
                                 <Button
                                     w="100%"
                                     id='login_button'
-                                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                    color="white"
+                                    layerStyle='buttonGradient'
                                     p='5'
                                     type="submit"
                                     isLoading={isLoading}
@@ -144,8 +141,7 @@ function Login() {
             >
                 <Text
                     fontSize='14'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip='text'
+                    layerStyle='textGradient'
                     mt='10px'
                 >
                     ¿Aún no tienes una cuenta?{' '}
@@ -155,7 +151,7 @@ function Login() {
                     _hover={{ textDecoration: "underline" }}
                     to="/register"
                     fontSize='12px'
-                    color='white'
+                    layerStyle='textLink'
                 >
                     Regístrate ahora
                 </Link>
