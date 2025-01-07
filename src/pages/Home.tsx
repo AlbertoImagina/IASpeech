@@ -6,7 +6,8 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { useAuthContext } from "../context/auth.context";
-import { Button, Flex, Switch, Text } from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
+import SwitchTheme from "../components/SwitchTheme";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
@@ -14,7 +15,7 @@ import { motion } from "motion/react"
 
 function Home() {
     const [step, setStep] = useState(0);
-    const [mode, setMode] = useState(false)
+
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -27,20 +28,6 @@ function Home() {
         setKeyPoints(points);
         setStep(1);
     };
-
-    useEffect(() => {
-        const savedMode = localStorage.getItem('chakra-ui-color-mode');
-        if (savedMode) {
-            setMode(savedMode === 'dark');
-        }
-    }, []);
-
-    const handleMode = () => {
-        const newMode = !mode;
-        setMode(newMode);
-        localStorage.setItem('chakra-ui-color-mode', newMode ? 'dark' : 'light');
-        window.location.reload();
-    }
 
     const handleRecordingComplete = async (audioBlob: Blob) => {
         const preguntaEmpresa = "Eres el comercial de ProAcademy, realiza un discurso convincente";
@@ -81,15 +68,8 @@ function Home() {
                         justify="space-between"
                         align="center"
                     >
-                        <Switch
-                            mr="5px"
-                            isChecked={mode}
-                            onChange={handleMode}
-                        />
-                        <Text
-                            fontSize="md"
-                            mr="10px"
-                        >{mode ? "Turn on the light" : "Turn off the light"}</Text>
+                        <SwitchTheme />
+
                         <Button
                             id="logout_button"
                             px="8"
