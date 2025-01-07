@@ -5,6 +5,8 @@ import { Users } from "./types/Users";
 import { NavigateFunction } from "react-router-dom";
 import { AuthContext } from "./context/auth.context";
 import { ChakraProvider } from "@chakra-ui/react";
+import theme  from "../colorModeScript"
+
 
 function App () {
 
@@ -44,7 +46,7 @@ function App () {
   }
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
         <BrowserRouter>
           <RuterController />

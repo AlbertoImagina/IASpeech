@@ -40,7 +40,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://ejemplo.com"
-            className="w-full px-4 py-3 rounded-xl border border-indigo-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300 focus:outline-none"
+            className="w-full px-4 py-3 rounded-xl border border-indigo-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300 focus:outline-none text-black"
             required
           />
           <button
