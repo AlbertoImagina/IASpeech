@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuthenticate } from '../hooks/useAuthenticate';
 import { Link as RouterLink } from 'react-router-dom'
 import * as Yup from 'yup';
+import { motion } from "motion/react"
 
 function Register() {
     const toast = useToast();
@@ -73,191 +74,201 @@ function Register() {
 
     return (
         <>
-            <Flex
-                display='flex'
-                flexDirection='column'
-                alignItems="center"
-                justifyContent='center'
-                w='100vw'
-                h='100vh'
+            <motion.div
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                    duration: 0.8,
+                    delay: 0.5,
+                    ease: [0, 0.71, 0.2, 1.01]
+                }}
             >
-                <Text
-                    mb="5"
-                    fontSize="24px"
-                    fontWeight="extrabold"
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip="text"
-                >Registrarse</Text>
-                <Formik
-                    initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
-                    validationSchema={validationSchemaRegister}
-                    validateOnSubmit={true}
-                    validateOnChange={false}
-                    validateOnBlur={false}
-                    onSubmit={onSubmit}
+                <Flex
+                    display='flex'
+                    flexDirection='column'
+                    alignItems="center"
+                    justifyContent='center'
+                    w='100vw'
+                    h='100vh'
                 >
-                    {props => (
-                        <form onSubmit={props.handleSubmit}>
-                            <Box 
-                                display='flex' 
-                                flexDirection='column' 
-                                gap='3px' 
-                                w='50vw'
-                                maxW={400}
-                                >
-                                <Input
-                                    id="name"
-                                    placeholder="Nombre"
-                                    type="text"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.name}
-                                    name="name"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.name ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.name}
-                                </Text>
-
-                                <Input
-                                    id="lastName"
-                                    placeholder="Apellidos"
-                                    type="text"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.lastName}
-                                    name="lastName"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.lastName ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.lastName}
-                                </Text>
-
-                                <Input
-                                    id="email"
-                                    placeholder="Correo"
-                                    type="email"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.email}
-                                    name="email"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.email ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.email}
-                                </Text>
-
-                                <Input
-                                    id="password"
-                                    placeholder="Contraseña"
-                                    type="password"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.password}
-                                    name="password"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.password ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.password}
-                                </Text>
-
-                                <Input
-                                    id="confirmPassword"
-                                    placeholder="Repite contraseña"
-                                    type="password"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.confirmPassword}
-                                    name="confirmPassword"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.confirmPassword ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.confirmPassword}
-                                </Text>
-
-                                <Input
-                                    id="phone"
-                                    type="tel"
-                                    onChange={props.handleChange}
-                                    onBlur={props.handleBlur}
-                                    value={props.values.phone}
-                                    name="phone"
-                                    maxLength={9}
-                                    placeholder="Teléfono"
-                                >
-                                </Input>
-                                <Text
-                                    opacity={props.errors.phone ? 1 : 0}
-                                    color="red.500"
-                                    fontSize="12px"
-                                    mt="3px"
-                                >
-                                    {props.errors.phone}
-                                </Text>
-
+                    <Text
+                        mb="5"
+                        fontSize="24px"
+                        fontWeight="extrabold"
+                        bgGradient='linear(to-l, #A052EE, #6645E7)'
+                        bgClip="text"
+                    >Registrarse</Text>
+                    <Formik
+                        initialValues={{ name: '', lastName: '', email: '', password: '', confirmPassword: '', phone: '' }}
+                        validationSchema={validationSchemaRegister}
+                        validateOnSubmit={true}
+                        validateOnChange={false}
+                        validateOnBlur={false}
+                        onSubmit={onSubmit}
+                    >
+                        {props => (
+                            <form onSubmit={props.handleSubmit}>
                                 <Box
                                     display='flex'
-                                    alignItems='center'
                                     flexDirection='column'
-                                    gap='5'
-                                    mt='5'>
-                                    <Button
-                                        id="register_button"
-                                        type="submit"
-                                        bgGradient='linear(to-l, #A052EE, #6645E7)'
-                                        color="white"
+                                    gap='3px'
+                                    w='50vw'
+                                    maxW={400}
+                                >
+                                    <Input
+                                        id="name"
+                                        placeholder="Nombre"
+                                        type="text"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.name}
+                                        name="name"
                                     >
-                                        Registrarse
-                                    </Button>
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.name ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.name}
+                                    </Text>
 
+                                    <Input
+                                        id="lastName"
+                                        placeholder="Apellidos"
+                                        type="text"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.lastName}
+                                        name="lastName"
+                                    >
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.lastName ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.lastName}
+                                    </Text>
+
+                                    <Input
+                                        id="email"
+                                        placeholder="Correo"
+                                        type="email"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.email}
+                                        name="email"
+                                    >
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.email ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.email}
+                                    </Text>
+
+                                    <Input
+                                        id="password"
+                                        placeholder="Contraseña"
+                                        type="password"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.password}
+                                        name="password"
+                                    >
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.password ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.password}
+                                    </Text>
+
+                                    <Input
+                                        id="confirmPassword"
+                                        placeholder="Repite contraseña"
+                                        type="password"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.confirmPassword}
+                                        name="confirmPassword"
+                                    >
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.confirmPassword ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.confirmPassword}
+                                    </Text>
+
+                                    <Input
+                                        id="phone"
+                                        type="tel"
+                                        onChange={props.handleChange}
+                                        onBlur={props.handleBlur}
+                                        value={props.values.phone}
+                                        name="phone"
+                                        maxLength={9}
+                                        placeholder="Teléfono"
+                                    >
+                                    </Input>
+                                    <Text
+                                        opacity={props.errors.phone ? 1 : 0}
+                                        color="red.500"
+                                        fontSize="12px"
+                                        mt="3px"
+                                    >
+                                        {props.errors.phone}
+                                    </Text>
+
+                                    <Box
+                                        display='flex'
+                                        alignItems='center'
+                                        flexDirection='column'
+                                        gap='5'
+                                        mt='5'>
+                                        <Button
+                                            id="register_button"
+                                            type="submit"
+                                            bgGradient='linear(to-l, #A052EE, #6645E7)'
+                                            color="white"
+                                        >
+                                            Registrarse
+                                        </Button>
+
+                                    </Box>
                                 </Box>
-                            </Box>
-                        </form>
-                    )}
-                </Formik>
-                <Text
-                    fontSize='14'
-                    bgGradient='linear(to-l, #A052EE, #6645E7)'
-                    bgClip='text'
-                    mt='10px'
-                >
-                    ¿Ya tienes una cuenta?{' '}
-                    <Link
-                        as={RouterLink}
-                        _hover={{ textDecoration: "underline" }}
-                        to="/"
-                        color="blue.500"
+                            </form>
+                        )}
+                    </Formik>
+                    <Text
+                        fontSize='14'
+                        bgGradient='linear(to-l, #A052EE, #6645E7)'
+                        bgClip='text'
+                        mt='10px'
                     >
-                        Inicia sesión ahora
-                    </Link>
+                        ¿Ya tienes una cuenta?{' '}
+                        <Link
+                            as={RouterLink}
+                            _hover={{ textDecoration: "underline" }}
+                            to="/"
+                            color="blue.500"
+                        >
+                            Inicia sesión ahora
+                        </Link>
 
-                </Text>
-            </Flex>
+                    </Text>
+                </Flex>
+            </motion.div>
         </>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { useAudioRecorder } from '../hooks/useAudioRecorder';
 import { useWaveform } from '../hooks/useWaveform';
 import { useAudioVisualizer } from '../hooks/useAudioVisualizer';

@@ -7,6 +7,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '../context/auth.context';
 import { useAuthenticate } from '../hooks/useAuthenticate';
+import { motion } from "motion/react"
 
 function Login() {
     const [isLoading, setLoading] = useState(false)
@@ -45,7 +46,18 @@ function Login() {
     }
 
     return (
-        <div>
+        <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                delay: 0.5,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
+        >
+
+
+
             <Flex
                 alignItems='center'
                 justifyContent='center'
@@ -149,7 +161,7 @@ function Login() {
             </Flex>
 
 
-        </div>
+        </motion.div>
     )
 }
 
