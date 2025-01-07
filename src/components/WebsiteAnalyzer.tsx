@@ -30,7 +30,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       <div className="flex items-center justify-center mb-8">
         <Globe size={48} className="text-indigo-600" />
       </div>
-      <h2 className="text-xl font-semibold text-center mb-6 text-indigo-900">
+      <h2 className="text-xl font-semibold text-center mb-6 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
         Introduce la URL para entrenar
       </h2>
       <form onSubmit={handleAnalyze} className="space-y-4">

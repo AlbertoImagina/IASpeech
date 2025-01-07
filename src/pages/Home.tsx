@@ -10,6 +10,7 @@ import { Button } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
+import { motion } from "motion/react"
 
 function Home() {
     const [step, setStep] = useState(1);
@@ -54,7 +55,14 @@ function Home() {
     }, [evaluation]);
 
     return (
-        <div className="min-h-screen dark:bg-black">
+        <motion.div className="min-h-screen dark:bg-black"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+                duration: 0.8,
+                ease: [0, 0.71, 0.2, 1.01]
+            }}
+        >
             <header className="dark:bg-black">
                 <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
                     <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
@@ -88,12 +96,29 @@ function Home() {
 
 
                     {isLoading && (
-                        <ModalCorrectSpeech />
+                        <motion.div
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
+                            }}
+                        >
+                            <ModalCorrectSpeech />
+                        </motion.div>
+
                     )}
 
 
                     {step === 2 && !isLoading && (
-                        <div className="w-full flex flex-col items-center space-y-6">
+                        <motion.div className="w-full flex flex-col items-center space-y-6"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.7,
+                                scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
+                            }}
+                        >
                             <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
                                 <h2 className="text-xl font-semibold mb-4 text-indigo-900">Puntos clave:</h2>
                                 <ul className="space-y-3">
@@ -111,18 +136,26 @@ function Home() {
                                 <VoiceRecorder
                                     onRecordingComplete={handleRecordingComplete} />
                             </div>
-                        </div>
+                        </motion.div>
                     )}
 
 
                     {step === 3 && evaluation && (
-                        <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+                        <motion.div
+                            className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6"
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.8,
+                                scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
+                            }}
+                        >
                             <SpeechEvaluation data={data} />
-                        </div>
+                        </motion.div>
                     )}
                 </div>
             </main>
-        </div>
+        </motion.div>
     );
 }
 
