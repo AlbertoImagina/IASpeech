@@ -1,4 +1,4 @@
-import { TbWorldWww } from "react-icons/tb";
+import { TfiWorld } from "react-icons/tfi";
 import { FaMicrophone } from "react-icons/fa";
 import { FaAward } from "react-icons/fa";
 
@@ -28,20 +28,20 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
 
 
   return (
-      <Stepper size='lg' colorScheme="gray" index={currentStep} mb='30px' px="20px">
+      <Stepper size='lg' colorScheme="gray" index={currentStep} mb='50px' px="20px">
         {steps.map((step, index) => (
           <Step key={index}>
             <StepIndicatorChakaraUi>
               <StepStatus
                 complete={<StepIcon />}
                 incomplete={
-                  index === 0 ? <TbWorldWww /> :
+                  index === 0 ? <TfiWorld /> :
                   index === 1 ? <FaMicrophone /> :
                   index === 2 ? <FaAward /> :
                   <StepNumber />
                 }
                 active={
-                  index === 0 ? <TbWorldWww /> :
+                  index === 0 ? <TfiWorld /> :
                   index === 1 ? <FaMicrophone /> :
                   index === 2 ? <FaAward /> :
                   <StepNumber />

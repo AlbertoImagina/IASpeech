@@ -13,7 +13,7 @@ import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 
 function Home() {
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -23,7 +23,7 @@ function Home() {
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
         setKeyPoints(points);
-        setStep(2);
+        setStep(1);
     };
 
     const handleRecordingComplete = async (audioBlob: Blob) => {
@@ -33,13 +33,13 @@ function Home() {
 
         try {
             setIsLoading(true);
+            setStep(2);
             const response = await enviarVoz({
                 pregunta: preguntaEmpresa,
                 guiaCorreccion: JSON.stringify(keyPoints),
                 archivo,
                 dificultad,
             });
-
             setData(response);
             setEvaluation(response);
         } catch (error) {
@@ -58,7 +58,7 @@ function Home() {
         <>
             <header className="dark:bg-black">
                 <div className=" mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
-                    <div onClick={() => setStep(1)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
+                    <div onClick={() => setStep(0)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
                         <Link to=''>Speech Trainer AI</Link>
                     </div>
                     <Button
@@ -77,8 +77,8 @@ function Home() {
                 <StepIndicator currentStep={step} />
 
                 <div className="flex flex-col items-center space-y-8">
-                    {step === 1 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6">
+                    {step === 0 && !isLoading && (
+                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12">
                             <motion.div
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
@@ -109,7 +109,7 @@ function Home() {
                     )}
 
 
-                    {step === 2 && !isLoading && (
+                    {step === 1 && !isLoading && (
                         <motion.div className="w-full flex flex-col items-center space-y-6"
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}

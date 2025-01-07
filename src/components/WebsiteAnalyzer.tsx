@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
+import { Flex } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react'
 
 interface WebsiteAnalyzerProps {
   onAnalysisComplete: (keyPoints: string[]) => void;
@@ -13,7 +15,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    
+
     setTimeout(() => {
       const mockKeyPoints = [
         "El producto incrementará su productividad un 50%",
@@ -27,11 +29,11 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   };
 
   return (
-    <div className="w-full p-10 bg-gray-200 rounded-xl">
+    <Flex flexDirection='column'>
       <div className="flex items-center justify-center mb-8">
-      <TfiWorld size={48} className="text-indigo-900"/>
+        <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'}/>
       </div>
-      <h2 className="text-xl font-semibold text-center mb-6 text-indigo-800">
+      <h2 className="text-xl font-semibold text-center mb-6 text-gray-200">
         Introduce la URL para entrenar
       </h2>
       <form onSubmit={handleAnalyze} className="space-y-4">
@@ -41,9 +43,10 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             placeholder="https://ejemplo.com"
-            className="w-full px-4 py-3 rounded-xl border border-indigo-100 focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-white/50 backdrop-blur-sm transition-all duration-300 focus:outline-none text-black"
+            className="w-full px-4 py-3 rounded-xl border border-gray focus:ring-2 focus:ring-indigo-500 focus:border-transparent bg-transparent backdrop-blur-sm transition-all duration-300 focus:outline-none text-white"
             required
           />
+
           <button
             type="submit"
             disabled={loading}
@@ -53,13 +56,13 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
           </button>
         </div>
       </form>
-      
+
       {loading && (
         <div className="mt-8 text-center">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
           <p className="mt-4 text-indigo-900">Analizando contenido...</p>
         </div>
       )}
-    </div>
+    </Flex>
   );
 }
