@@ -6,7 +6,7 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { useAuthContext } from "../context/auth.context";
-import { Button } from "@chakra-ui/react";
+import { Button, Flex, Switch, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
@@ -14,6 +14,7 @@ import { motion } from "motion/react"
 
 function Home() {
     const [step, setStep] = useState(0);
+    const [mode, setMode] = useState(false)
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -21,10 +22,25 @@ function Home() {
     const { logout } = useAuthContext();
     const navigate = useNavigate();
 
+
     const handleAnalysisComplete = (points: KeyPoint[]) => {
         setKeyPoints(points);
         setStep(1);
     };
+
+    useEffect(() => {
+        const savedMode = localStorage.getItem('chakra-ui-color-mode');
+        if (savedMode) {
+            setMode(savedMode === 'dark');
+        }
+    }, []);
+
+    const handleMode = () => {
+        const newMode = !mode;
+        setMode(newMode);
+        localStorage.setItem('chakra-ui-color-mode', newMode ? 'dark' : 'light');
+        window.location.reload();
+    }
 
     const handleRecordingComplete = async (audioBlob: Blob) => {
         const preguntaEmpresa = "Eres el comercial de ProAcademy, realiza un discurso convincente";
@@ -61,16 +77,31 @@ function Home() {
                     <div onClick={() => setStep(0)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
                         <Link to=''>Speech Trainer AI</Link>
                     </div>
-                    <Button
-                        id="logout_button"
-                        px="8"
-                        bgGradient="linear(to-l, #A052EE, #6645E7)"
-                        color="white"
-                        fontSize="18px"
-                        onClick={() => logout(navigate)}
+                    <Flex
+                        justify="space-between"
+                        align="center"
                     >
-                        Cerrar Sesión
-                    </Button>
+                        <Switch
+                            mr="5px"
+                            isChecked={mode}
+                            onChange={handleMode}
+                        />
+                        <Text
+                            fontSize="md"
+                            mr="10px"
+                        >{mode ? "Turn on the light" : "Turn off the light"}</Text>
+                        <Button
+                            id="logout_button"
+                            px="8"
+                            bgGradient="linear(to-l, #A052EE, #6645E7)"
+                            color="white"
+                            fontSize="18px"
+                            onClick={() => logout(navigate)}
+                        >
+                            Cerrar Sesión
+                        </Button>
+                    </Flex>
+
                 </div>
             </header>
 
@@ -81,16 +112,16 @@ function Home() {
                     {step === 0 && !isLoading && (
                         <div className="w-full max-w-2xl rounded-2xl border border-gray p-12 bg-[#1D222D]">
                             <motion.div
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                                duration: 0.8,
-                                scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
-                            }}
-                        >
-                            <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
-                        </motion.div>
-                            
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.8,
+                                    scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
+                                }}
+                            >
+                                <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
+                            </motion.div>
+
                         </div>
                     )}
 

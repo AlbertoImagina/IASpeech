@@ -29,7 +29,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   };
 
   return (
-    <Flex flexDirection='column'>
+    <Flex flexDirection='column' className='darkMode'>
       <div className="flex items-center justify-center mb-8">
         <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'}/>
       </div>
