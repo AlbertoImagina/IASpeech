@@ -75,7 +75,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
 
       {loading && (
         <div className="mt-8 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#A12DFF] border-t-transparent"></div>
           <Text
             layerStyle="textGradient"
           >Analizando contenido...</Text>

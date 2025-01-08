@@ -123,7 +123,7 @@ function Home() {
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                         >
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: "#1D222D", boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
                                 <Text
                                     fontSize="20px"
                                     marginBottom={6}
