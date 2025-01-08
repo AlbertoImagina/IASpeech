@@ -93,8 +93,8 @@ function Home() {
                     {step === 0 && !isLoading && (
                         <div className="w-full max-w-2xl rounded-2xl p-12" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
                             <motion.div
-                                initial= {{opacity: 0, translateX: -50}}
-                                animate = {{opacity: 1, translateX: 0}}
+                                initial={{ opacity: 0, translateX: -50 }}
+                                animate={{ opacity: 1, translateX: 0 }}
                                 transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                             >
                                 <WebsiteAnalyzer
@@ -106,9 +106,9 @@ function Home() {
 
                     {isLoading && (
                         <motion.div
-                        initial= {{opacity: 0, translateX: -50}}
-                        animate = {{opacity: 1, translateX: 0}}
-                        transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
+                            initial={{ opacity: 0, translateX: -50 }}
+                            animate={{ opacity: 1, translateX: 0 }}
+                            transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
                         >
                             <ModalCorrectSpeech />
                         </motion.div>
@@ -118,15 +118,24 @@ function Home() {
 
                     {step === 1 && !isLoading && (
                         <motion.div className="w-full flex flex-col items-center space-y-6"
-                        initial= {{opacity: 0, translateX: 50}}
-                        animate = {{opacity: 1, translateX: 0}}
-                        transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+                            initial={{ opacity: 0, translateX: 50 }}
+                            animate={{ opacity: 1, translateX: 0 }}
+                            transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                         >
                             <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
-                                <Text fontSize="20px" marginBottom={6}>Puntos clave:</Text>
+                                <Text
+                                    fontSize="20px"
+                                    marginBottom={6}
+                                    color="#9CA3AF"
+                                >Puntos clave:</Text>
                                 <OrderedList>
                                     {keyPoints.map((point, index) => (
-                                        <ListItem key={index}>{point}</ListItem>
+                                        <ListItem
+                                            key={index}
+                                            color="#9CA3AF"
+                                        >
+                                            {point}
+                                        </ListItem>
                                     ))}
                                 </OrderedList>
                             </div>

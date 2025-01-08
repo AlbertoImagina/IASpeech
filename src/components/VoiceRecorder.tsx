@@ -4,7 +4,7 @@ import { useWaveform } from '../hooks/useWaveform';
 import { useAudioVisualizer } from '../hooks/useAudioVisualizer';
 import { RecordButton } from './RecordButton';
 import { AudioControls } from './AudioControls';
-import {Text} from '@chakra-ui/react'
+import { Text } from '@chakra-ui/react'
 
 interface VoiceRecorderProps {
   onRecordingComplete: (audioBlob: Blob) => void;
@@ -14,7 +14,7 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
   const waveformRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  
+
   const {
     isRecording,
     audioUrl,
@@ -23,7 +23,7 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
     setupRecorder,
     beginRecording,
   } = useAudioRecorder();
-  
+
   const { loadAudio, playAudio } = useWaveform(waveformRef);
   const { setupAudioContext, drawWaveform, cleanup } = useAudioVisualizer();
 
@@ -41,16 +41,16 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         onRecordingComplete(audioBlob);
         cleanup();
       });
-      
+
       setupAudioContext(stream);
-      
+
       if (waveformRef.current) {
         waveformRef.current.style.display = 'none';
       }
       if (canvasRef.current) {
         canvasRef.current.style.display = 'block';
       }
-      
+
       drawWaveform(canvasRef);
       beginRecording();
     } catch (err) {
@@ -61,8 +61,18 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
   return (
     <div className="w-full space-y-6">
       <div className="text-center">
-      <Text fontSize="20px" marginBottom={6}>Graba tu discurso:</Text>
-      <Text fontSize="14px" >Practica las claves con tus propias palabras</Text>
+        <Text
+          fontSize="20px"
+          marginBottom={6}
+          color="#9CA3AF"
+        >Graba tu discurso:
+        </Text>
+        <Text
+          fontSize="14px"
+          color="#9CA3AF"
+        >
+          Practica las claves con tus propias palabras
+        </Text>
       </div>
 
       <div className="flex justify-center space-x-4">
@@ -71,7 +81,7 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
           onStartRecording={handleStartRecording}
           onStopRecording={stopRecording}
         />
-        
+
         {audioUrl && (
           <AudioControls
             audioUrl={audioUrl}

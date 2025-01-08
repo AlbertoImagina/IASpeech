@@ -23,12 +23,14 @@ const ModalCorrectSpeech = () => {
                 fontSize="xl"
                 fontWeight="semibold"
                 m="4"
+                color="#9CA3AF"
             >
                 Enviando tu discurso para corregir
             </Text>
             <Text
                 fontSize="16px"
                 my="5px"
+                color="#9CA3AF"
             >
                 Un segundo por favor...
             </Text>

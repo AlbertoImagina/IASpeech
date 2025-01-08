@@ -12,14 +12,31 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
   return (
     <div className="w-full space-y-8">
       <div className="text-center">
-        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" color={'#6645E7'}/>
-        <Text fontSize="20px" marginBottom={6}>Evaluación de discurso</Text>
-        <Text fontSize="18px" marginBottom={6}>Detalles de tus respuestas y como lo has hecho:</Text>
+        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" color={'#6645E7'} />
+        <Text
+          fontSize="20px"
+          marginBottom={6}
+          color="#9CA3AF"
+        >
+          Evaluación de discurso
+        </Text>
+        <Text
+          fontSize="18px"
+          marginBottom={6}
+          color="#9CA3AF"
+        >
+          Detalles de tus respuestas y como lo has hecho:
+        </Text>
       </div>
 
       <div className="relative pt-1">
         <div className="flex items-center justify-between mb-2">
-          <Text fontSize="18px">Puntuación total</Text>
+          <Text
+            fontSize="18px"
+            color="#9CA3AF"
+          >
+            Puntuación total
+          </Text>
           <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {data.puntuacion}%
           </span>
@@ -33,7 +50,12 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
       </div>
 
       <div className="space-y-4">
-        <Text fontSize="18px">Claves usadas:</Text>
+        <Text
+          fontSize="18px"
+          color="#9CA3AF"
+        >
+          Claves usadas:
+        </Text>
         {data.evaluacion.map((item, index) => {
           return (
             <div

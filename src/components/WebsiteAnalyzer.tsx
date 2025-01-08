@@ -37,14 +37,14 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
         fontSize="20px"
         marginBottom={6}
         textAlign="center"
-        layerStyle="textGradient"
+        color="#9CA3AF"
         fontWeight="semibold"
       >
         Introduce la URL para entrenar
       </Text>
       <form onSubmit={handleAnalyze} className="space-y-4">
-        <Flex 
-        align="center"
+        <Flex
+          align="center"
         >
           <Input
             type='url'
@@ -61,8 +61,8 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             p={6}
             ml={2}
           >
-            <Search 
-            size={25} 
+            <Search
+              size={25}
             />
           </Button>
         </Flex>
@@ -71,7 +71,9 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       {loading && (
         <div className="mt-8 text-center">
           <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-indigo-500 border-t-transparent"></div>
-          <Text>Analizando contenido...</Text>
+          <Text
+            layerStyle="textGradient"
+          >Analizando contenido...</Text>
         </div>
       )}
     </Flex>
