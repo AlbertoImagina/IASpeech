@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
-import { Flex, Input, Text, InputRightElement, InputGroup, Button } from '@chakra-ui/react';
+import { Flex, Input, Text, Button } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
 
 interface WebsiteAnalyzerProps {
@@ -33,31 +33,39 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       <div className="flex items-center justify-center mb-8">
         <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'} />
       </div>
-      <Text fontSize="20px" marginBottom={6} textAlign="center">Introduce la URL para entrenar</Text>
+      <Text
+        fontSize="20px"
+        marginBottom={6}
+        textAlign="center"
+        layerStyle="textGradient"
+        fontWeight="semibold"
+      >
+        Introduce la URL para entrenar
+      </Text>
       <form onSubmit={handleAnalyze} className="space-y-4">
-        <div className="relative">
-          <InputGroup>
-            <Input
-              type="url"
-              placeholder="https://ejemplo.com"
-              py={6}
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              required
+        <Flex 
+        align="center"
+        >
+          <Input
+            type='url'
+            py={6}
+            value={url}
+            onChange={(e) => setUrl(e.target.value)}
+            placeholder='https://ejemplo.com'
+            required
+          />
+          <Button
+            type="submit"
+            disabled={loading}
+            layerStyle="buttonGradient"
+            p={6}
+            ml={2}
+          >
+            <Search 
+            size={25} 
             />
-            <InputRightElement width="4.5rem" display="flex" alignItems="center" justifyContent="center">
-              <Button
-                type="submit"
-                disabled={loading}
-                layerStyle="buttonGradient"
-                size="sm"
-                mt='auto'
-              >
-                <Search size={18} />
-              </Button>
-            </InputRightElement>
-          </InputGroup>
-        </div>
+          </Button>
+        </Flex>
       </form>
 
       {loading && (

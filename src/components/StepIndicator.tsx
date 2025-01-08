@@ -28,36 +28,53 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
 
 
   return (
-      <Stepper size='lg' colorScheme="gray" index={currentStep} mb='50px' px="20px">
-        {steps.map((step, index) => (
-          <Step key={index}>
-            <StepIndicatorChakaraUi>
-              <StepStatus
-                complete={<StepIcon />}
-                incomplete={
-                  index === 0 ? <TfiWorld /> :
+    <Stepper 
+    size='lg' 
+    colorScheme="gray" 
+    index={currentStep} 
+    mb='50px' 
+    px="20px">
+      {steps.map((step, index) => (
+        <Step key={index}>
+          <StepIndicatorChakaraUi
+          layerStyle='buttonGradient'
+          >
+            <StepStatus
+              complete={<StepIcon />}
+              incomplete={
+                index === 0 ? <TfiWorld /> :
                   index === 1 ? <FaMicrophone /> :
-                  index === 2 ? <FaAward /> :
-                  <StepNumber />
-                }
-                active={
-                  index === 0 ? <TfiWorld /> :
+                    index === 2 ? <FaAward /> :
+                      <StepNumber />
+              }
+              active={
+                index === 0 ? <TfiWorld /> :
                   index === 1 ? <FaMicrophone /> :
-                  index === 2 ? <FaAward /> :
-                  <StepNumber />
-                }
-              />
-              
-            </StepIndicatorChakaraUi>
+                    index === 2 ? <FaAward /> :
+                      <StepNumber />
+              }
+            />
 
-            <Box flexShrink='0'>
-              <StepTitle>{step.title}</StepTitle>
-              <StepDescription>{step.description}</StepDescription>
-            </Box>
+          </StepIndicatorChakaraUi>
 
-            <StepSeparator />
-          </Step>
-        ))}
-      </Stepper>
+          <Box flexShrink='0'>
+            <StepTitle
+              layerStyle='textGradient'
+            >
+              {step.title}
+            </StepTitle>
+            <StepDescription
+              layerStyle='textGradient'
+            >
+              {step.description}
+            </StepDescription>
+          </Box>
+
+          <StepSeparator
+            bgGradient="linear(to-l, #A052EE, #6645E7)"
+          />
+        </Step>
+      ))}
+    </Stepper>
   );
 }
