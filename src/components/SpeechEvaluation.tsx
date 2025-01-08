@@ -16,15 +16,15 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
         <Text
           fontSize="20px"
           marginBottom={6}
-          color="#9CA3AF"
+          color="text"
         >
           Evaluación de discurso
         </Text>
         <Text
           fontSize="18px"
           marginBottom={6}
-          color="#9CA3AF"
-        >
+          color="text"
+          >
           Detalles de tus respuestas y como lo has hecho:
         </Text>
       </div>
@@ -33,7 +33,7 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
         <div className="flex items-center justify-between mb-2">
           <Text
             fontSize="18px"
-            color="#9CA3AF"
+            color="text"
           >
             Puntuación total
           </Text>
@@ -52,7 +52,7 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
       <div className="space-y-4">
         <Text
           fontSize="18px"
-          color="#9CA3AF"
+          color="text"
         >
           Claves usadas:
         </Text>

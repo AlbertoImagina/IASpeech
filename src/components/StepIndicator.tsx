@@ -7,7 +7,7 @@ import {
   Step,
   StepDescription,
   StepIcon,
-  StepIndicator as StepIndicatorChakaraUi,
+  StepIndicator as StepIndicatorChakraUi,
   StepNumber,
   StepSeparator,
   StepStatus,
@@ -26,52 +26,51 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
     { title: 'Paso 3', description: 'Evaluación' },
   ]
 
-
   return (
     <Stepper 
-    size='lg' 
-    colorScheme="gray" 
-    index={currentStep} 
-    mb='50px' 
-    px="20px">
+      size='lg'
+      index={currentStep} 
+      mb='50px' 
+      px="20px"
+      >
       {steps.map((step, index) => (
         <Step key={index}>
-          <StepIndicatorChakaraUi
-          layerStyle='buttonGradient'
+          <StepIndicatorChakraUi
+            color={currentStep === index ? 'icon' : 'disabled'}
+            borderColor={currentStep === index ? 'icon' : 'disabled'}
           >
             <StepStatus
               complete={<StepIcon />}
               incomplete={
                 index === 0 ? <TfiWorld /> :
-                  index === 1 ? <FaMicrophone /> :
-                    index === 2 ? <FaAward /> :
-                      <StepNumber />
+                index === 1 ? <FaMicrophone /> :
+                index === 2 ? <FaAward /> :
+                <StepNumber />
               }
               active={
                 index === 0 ? <TfiWorld /> :
-                  index === 1 ? <FaMicrophone /> :
-                    index === 2 ? <FaAward /> :
-                      <StepNumber />
+                index === 1 ? <FaMicrophone /> :
+                index === 2 ? <FaAward /> :
+                <StepNumber />
               }
             />
-
-          </StepIndicatorChakaraUi>
+          </StepIndicatorChakraUi>
 
           <Box flexShrink='0'>
             <StepTitle
-              layerStyle='textGradient'
+              color={currentStep === index ? 'icon' : 'disabled'}
             >
               {step.title}
             </StepTitle>
             <StepDescription
-              layerStyle='textGradient'
+              color={currentStep === index ? 'icon' : 'disabled'}
             >
               {step.description}
             </StepDescription>
           </Box>
 
           <StepSeparator
-            bgGradient="linear(to-l, #A052EE, #6645E7)"
+            bgGradient={currentStep > index ? "linear(to-l, #A052EE, #6645E7)" : "disabled"}
           />
         </Step>
       ))}

@@ -9,28 +9,30 @@ const config: ThemeConfig = {
 
 const theme = extendTheme({
   config,
+
   layerStyles: {
-    // DEGRADADO BÁSICO DE LETRAS
     textGradient: {
-      bgGradient: 'linear(to-l, #A052EE, #6645E7)',
+      bgGradient:"linear(to-r, #4F46E5 0%, #9333EA 31.39%)",
       bgClip: "text"
     },
-    // DEGRADADO BÁSICO DE BOTON
     buttonGradient: {
-      bgGradient: 'linear(to-l, #A052EE, #6645E7)',
-    },
-    // ESTILO BASICO DE LINK
-    textLink: {
-      color:'white'
+      bgGradient: "linear(to-r, #6366F1 0%, #A855F7 100%)",
+      color: 'white'
     }
-
   },
-  textStyles: {
-    primaryText: {
-      fontSize: '24px',
-      fontWeight: 'extrabold',
+  semanticTokens: {
+    colors: {
+      error: 'red.500',
+      text: {
+        default: 'black',
+        _dark: 'white',
+      },
+      icon: '#A12DFF',
+      disabled: '#9CA3AF',
+      buttonIcon: 'white',
+      backgroundModal: '#1D222D'
     },
-  }
+  },
 })
 
 export default theme

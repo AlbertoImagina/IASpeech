@@ -89,7 +89,7 @@ function Register() {
             <Text
                 mb="5"
                 fontSize="24px"
-                fontWeight="extrabold"
+                fontWeight="700"
                 layerStyle='textGradient'
             >Registrarse</Text>
             <Formik
@@ -233,6 +233,7 @@ function Register() {
                                     id="register_button"
                                     type="submit"
                                     layerStyle='buttonGradient'
+                                    color="buttonIcon"
                                     isLoading={isLoading}
                                     w="100%"
                                 >

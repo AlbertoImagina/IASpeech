@@ -64,12 +64,12 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         <Text
           fontSize="20px"
           marginBottom={6}
-          color="#9CA3AF"
+          color="text"
         >Graba tu discurso:
         </Text>
         <Text
           fontSize="14px"
-          color="#9CA3AF"
+          color="text"
         >
           Practica las claves con tus propias palabras
         </Text>
@@ -90,7 +90,7 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         )}
       </div>
 
-      <div className="relative h-[120px] rounded-xl overflow-hidden bg-gradient-to-r from-indigo-50 to-purple-50 shadow-inner">
+      <div className="relative h-[120px] rounded-xl overflow-hidden shadow-inner" style={{backgroundColor: 'backgroundModal', borderColor:"disabled", border:"1px solid"}}>
         <div ref={waveformRef} className="absolute inset-0" />
         <canvas
           ref={canvasRef}

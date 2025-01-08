@@ -8,9 +8,12 @@ interface WebsiteAnalyzerProps {
   onAnalysisComplete: (keyPoints: string[]) => void;
 }
 
+
+
 export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   const [url, setUrl] = useState('');
   const [loading, setLoading] = useState(false);
+
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,13 +34,13 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   return (
     <Flex flexDirection='column'>
       <div className="flex items-center justify-center mb-8">
-        <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'} />
+        <Icon as={TfiWorld} w={10} h={10} color='icon' />
       </div>
       <Text
         fontSize="20px"
         marginBottom={6}
         textAlign="center"
-        color="#9CA3AF"
+        layerStyle="textGradient"
         fontWeight="semibold"
       >
         Introduce la URL para entrenar
@@ -58,11 +61,13 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             type="submit"
             disabled={loading}
             layerStyle="buttonGradient"
+            color='buttonIcon'
             p={6}
             ml={2}
           >
             <Search
               size={25}
+
             />
           </Button>
         </Flex>

@@ -16,7 +16,7 @@ import { useColorModeValue } from '@chakra-ui/react';
 
 function Home() {
     const [step, setStep] = useState(0);
-    const bgColor = useColorModeValue('white', '#1D222D');
+    const bgColor = useColorModeValue('buttonIcon', 'backgroundModal');
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -75,7 +75,8 @@ function Home() {
                         <Button
                             id="logout_button"
                             px="8"
-                            bgGradient="linear(to-l, #A052EE, #6645E7)"
+                            layerStyle="buttonGradient"
+                            color="buttonIcon"
                             fontSize="18px"
                             onClick={() => logout(navigate)}
                         >
@@ -122,24 +123,24 @@ function Home() {
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                         >
-                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)" }}>
                                 <Text
                                     fontSize="20px"
                                     marginBottom={6}
-                                    color="#9CA3AF"
+                                    color="text"
                                 >Puntos clave:</Text>
                                 <OrderedList>
                                     {keyPoints.map((point, index) => (
                                         <ListItem
                                             key={index}
-                                            color="#9CA3AF"
+                                            color="text"
                                         >
                                             {point}
                                         </ListItem>
                                     ))}
                                 </OrderedList>
                             </div>
-                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
                                 <VoiceRecorder
                                     onRecordingComplete={handleRecordingComplete} />
                             </div>
@@ -149,7 +150,7 @@ function Home() {
 
                     {step === 3 && evaluation && (
                         <motion.div
-                            className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}
+                            className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{

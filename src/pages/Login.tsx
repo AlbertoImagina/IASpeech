@@ -56,7 +56,8 @@ function Login() {
             boxShadow="xl"
         >
             <Text
-                textStyle='primaryText'
+                fontSize="24px"
+                fontWeight="700"
                 mb='5'
                 layerStyle='textGradient'
             >
@@ -120,6 +121,7 @@ function Login() {
                                     id='login_button'
                                     layerStyle='buttonGradient'
                                     p='5'
+                                    color='buttonIcon'
                                     type="submit"
                                     isLoading={isLoading}
                                 >
