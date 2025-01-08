@@ -5,15 +5,12 @@ import { SpeechEvaluation } from "../components/SpeechEvaluation";
 import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
-import { useAuthContext } from "../context/auth.context";
-import { Button, Flex, Text, OrderedList, ListItem } from "@chakra-ui/react";
-import SwitchTheme from "../components/SwitchTheme";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Text, OrderedList, ListItem } from "@chakra-ui/react";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
 import { useToast } from "@chakra-ui/react";
+import Header from "../components/Header";
 
 function Home() {
     const [step, setStep] = useState(0);
@@ -22,8 +19,6 @@ function Home() {
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
-    const { logout } = useAuthContext();
-    const navigate = useNavigate();
     const toast = useToast();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
@@ -77,31 +72,7 @@ function Home() {
 
     return (
         <>
-            <header className="dark:bg-black">
-                <div className=" text-[24px] mx-auto px-4 py-4 sm:px-6 lg:px-12 flex items-center justify-between dark:bg-black">
-                    <div onClick={() => setStep(0)} className="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent dark:bg-black">
-                        <Link to=''>Speech Trainer AI</Link>
-                    </div>
-                    <Flex
-                        justify="space-between"
-                        align="center"
-                    >
-                        <SwitchTheme />
-
-                        <Button
-                            id="logout_button"
-                            px="8"
-                            layerStyle="buttonGradient"
-                            color="buttonIcon"
-                            fontSize="18px"
-                            onClick={() => logout(navigate)}
-                        >
-                            Cerrar Sesión
-                        </Button>
-                    </Flex>
-
-                </div>
-            </header>
+            <Header/>
 
             <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 h-full dark:bg-black">
                 <StepIndicator currentStep={step} />
