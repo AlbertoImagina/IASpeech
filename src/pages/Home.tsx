@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
+import { useToast } from "@chakra-ui/react";
 
 function Home() {
     const [step, setStep] = useState(0);
@@ -23,7 +24,7 @@ function Home() {
     const [data, setData] = useState<any>(null);
     const { logout } = useAuthContext();
     const navigate = useNavigate();
-
+    const toast = useToast();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
         setKeyPoints(points);
@@ -38,14 +39,29 @@ function Home() {
         try {
             setIsLoading(true);
             setStep(2);
-            const response = await enviarVoz({
-                pregunta: preguntaEmpresa,
-                guiaCorreccion: JSON.stringify(keyPoints),
-                archivo,
-                dificultad,
-            });
-            setData(response);
-            setEvaluation(response);
+            try {
+                const response = await enviarVoz({
+                    pregunta: preguntaEmpresa,
+                    guiaCorreccion: JSON.stringify(keyPoints),
+                    archivo,
+                    dificultad,
+                });
+                if (response.status === 500) {
+                    throw new Error("Internal Server Error");
+                }
+                setData(response);
+                setEvaluation(response);
+            } catch (error) {
+                console.error("Error al enviar el discurso:", error);
+                setStep(1);
+                return toast({
+                    title: 'Error enviar voz',
+                    description: 'El audio no pudo ser procesado correctamente, vuelva a intentarlo.',
+                    status: 'error',
+                })
+            } finally {
+                setIsLoading(false);
+            }
         } catch (error) {
             console.error("Error al enviar el discurso:", error);
         }
