@@ -1,7 +1,12 @@
 import { Flex, Text, Progress } from "@chakra-ui/react"
 import { useColorModeValue } from '@chakra-ui/react';
 
-const ModalCorrectSpeech = () => {
+interface ModalCorrectSpeechProps {
+    title: string,
+    subTitle?: string
+}
+
+const ModalCorrectSpeech = ({title,subTitle}:ModalCorrectSpeechProps) => {
     const bgColor = useColorModeValue('#FFFFFF', '#1D222D');
 
     return (
@@ -24,13 +29,13 @@ const ModalCorrectSpeech = () => {
                 fontWeight="semibold"
                 m="4"
             >
-                Enviando tu discurso para corregir
+                {title}
             </Text>
             <Text
                 fontSize="16px"
                 my="5px"
             >
-                Un segundo por favor...
+                {subTitle}
             </Text>
             <Progress
                 size="xs"

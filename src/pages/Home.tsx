@@ -118,7 +118,7 @@ function Home() {
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
                         >
-                            <ModalCorrectSpeech />
+                            <ModalCorrectSpeech title="Enviando tu discurso para corregir" subTitle="Un segundo por favor..."/>
                         </motion.div>
 
                     )}
