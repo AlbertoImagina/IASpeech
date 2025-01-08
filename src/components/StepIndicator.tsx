@@ -32,6 +32,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
       index={currentStep} 
       mb='50px' 
       px="20px"
+      colorScheme="purple"
       >
       {steps.map((step, index) => (
         <Step key={index}>
