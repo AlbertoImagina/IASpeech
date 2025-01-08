@@ -1,5 +1,5 @@
 import { BrowserRouter } from "react-router-dom";
-import { RuterController } from "./routerController/RuterController";
+import { RuterController } from "./router/RuterController";
 import { useState } from "react";
 import { Users } from "./types/Users";
 import { NavigateFunction } from "react-router-dom";
@@ -9,7 +9,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./ui/theme";
 
 
-function App () {
+function App() {
 
   const storedUser = localStorage.getItem("user");
   const userPerfil: Users = storedUser ? JSON.parse(storedUser) : null;
@@ -51,9 +51,9 @@ function App () {
     <ChakraProvider theme={theme}>
       <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
         <DataContext.Provider value={{ step, setStep }}>
-        <BrowserRouter>
-          <RuterController />
-        </BrowserRouter>
+          <BrowserRouter>
+            <RuterController />
+          </BrowserRouter>
         </DataContext.Provider>
       </AuthContext.Provider>
     </ChakraProvider>

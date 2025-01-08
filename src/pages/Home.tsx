@@ -19,7 +19,7 @@ function Home() {
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
-    const {step, setStep} = useDataContext();
+    const { step, setStep } = useDataContext();
     const toast = useToast();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
@@ -105,7 +105,8 @@ function Home() {
                                 transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                             >
                                 <WebsiteAnalyzer
-                                    onAnalysisComplete={handleAnalysisComplete} />
+                                    onAnalysisComplete={handleAnalysisComplete}
+                                />
                             </motion.div>
                         </Flex>
                     )}

@@ -4,7 +4,7 @@ import { useWaveform } from '../hooks/useWaveform';
 import { useAudioVisualizer } from '../hooks/useAudioVisualizer';
 import { RecordButton } from './RecordButton';
 import { AudioControls } from './AudioControls';
-import { Text } from '@chakra-ui/react'
+import { Flex, Text } from '@chakra-ui/react'
 
 interface VoiceRecorderProps {
   onRecordingComplete: (audioBlob: Blob) => void;
@@ -59,8 +59,14 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
   };
 
   return (
-    <div className="w-full space-y-6">
-      <div className="text-center">
+    <Flex
+      w='full'
+      direction='column'
+      my={6}>
+      <Flex
+        textAlign='center'
+        direction='column'
+      >
         <Text
           fontSize="20px"
           marginBottom={6}
@@ -70,16 +76,20 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         <Text
           fontSize="14px"
           color="text"
+          mb={6}
         >
           Practica las claves con tus propias palabras
         </Text>
-      </div>
+      </Flex>
 
-      <div className="flex justify-center space-x-4">
+      <Flex
+        justify='center'
+        mb={6}>
         <RecordButton
           isRecording={isRecording}
           onStartRecording={handleStartRecording}
           onStopRecording={stopRecording}
+          
         />
 
         {audioUrl && (
@@ -88,9 +98,9 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
             onPlay={playAudio}
           />
         )}
-      </div>
+      </Flex>
 
-      <div className="relative h-[120px] rounded-xl overflow-hidden shadow-inner" style={{backgroundColor: 'transparent', borderColor:"disabled", border:"1px solid"}}>
+      <div className="relative h-[120px] rounded-xl overflow-hidden shadow-inner" style={{ backgroundColor: 'transparent', borderColor: "disabled", border: "1px solid" }}>
         <div ref={waveformRef} className="absolute inset-0" />
         <canvas
           ref={canvasRef}
@@ -104,6 +114,6 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
           </div>
         )}
       </div>
-    </div>
+    </Flex>
   );
 }
