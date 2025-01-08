@@ -92,7 +92,7 @@ function Home() {
 
                 <div className="flex flex-col items-center space-y-8">
                     {step === 0 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl p-12" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
+                        <div className="w-full max-w-2xl rounded-2xl p-12" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                             <motion.div
                                 initial={{ opacity: 0, translateX: -50 }}
                                 animate={{ opacity: 1, translateX: 0 }}
@@ -123,7 +123,7 @@ function Home() {
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                         >
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)" }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
                                 <Text
                                     fontSize="20px"
                                     marginBottom={6}
@@ -140,7 +140,7 @@ function Home() {
                                     ))}
                                 </OrderedList>
                             </div>
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                                 <VoiceRecorder
                                     onRecordingComplete={handleRecordingComplete} />
                             </div>
@@ -150,7 +150,7 @@ function Home() {
 
                     {step === 3 && evaluation && (
                         <motion.div
-                            className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}
+                            className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{
