@@ -18,7 +18,6 @@ const theme = extendTheme({
     // DEGRADADO BÁSICO DE BOTON
     buttonGradient: {
       bgGradient: 'linear(to-l, #A052EE, #6645E7)',
-      color: "white"
     },
     // ESTILO BASICO DE LINK
     textLink: {

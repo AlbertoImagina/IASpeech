@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
-import { Flex, Input, Text } from '@chakra-ui/react';
+import { Flex, Input, Text, InputRightElement, InputGroup, Button } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
 
 interface WebsiteAnalyzerProps {
@@ -29,28 +29,34 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   };
 
   return (
-    <Flex flexDirection='column' className='darkMode'>
+    <Flex flexDirection='column'>
       <div className="flex items-center justify-center mb-8">
         <Icon as={TfiWorld} w={10} h={10} color={'#6645E7'} />
       </div>
       <Text fontSize="20px" marginBottom={6} textAlign="center">Introduce la URL para entrenar</Text>
       <form onSubmit={handleAnalyze} className="space-y-4">
         <div className="relative">
-          <Input
-            type='url'
-            py={6}
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder='https://ejemplo.com'
-            required
-          />
-          <button
-            type="submit"
-            disabled={loading}
-            className="absolute right-2 top-1/2 -translate-y-1/2 bg-gradient-to-r from-indigo-500 to-purple-500 text-white p-2 rounded-lg hover:from-indigo-600 hover:to-purple-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <Search size={18} />
-          </button>
+          <InputGroup>
+            <Input
+              type="url"
+              placeholder="https://ejemplo.com"
+              py={6}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              required
+            />
+            <InputRightElement width="4.5rem" display="flex" alignItems="center" justifyContent="center">
+              <Button
+                type="submit"
+                disabled={loading}
+                layerStyle="buttonGradient"
+                size="sm"
+                mt='auto'
+              >
+                <Search size={18} />
+              </Button>
+            </InputRightElement>
+          </InputGroup>
         </div>
       </form>
 

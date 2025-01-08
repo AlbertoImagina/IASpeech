@@ -75,7 +75,6 @@ function Home() {
                             id="logout_button"
                             px="8"
                             bgGradient="linear(to-l, #A052EE, #6645E7)"
-                            color="white"
                             fontSize="18px"
                             onClick={() => logout(navigate)}
                         >
@@ -91,7 +90,7 @@ function Home() {
 
                 <div className="flex flex-col items-center space-y-8">
                     {step === 0 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl border border-gray p-12" style={{ backgroundColor: bgColor }}>
+                        <div className="w-full max-w-2xl rounded-2xl p-12" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
                             <motion.div
                                 initial={{ opacity: 0, scale: 0 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -102,7 +101,6 @@ function Home() {
                             >
                                 <WebsiteAnalyzer onAnalysisComplete={handleAnalysisComplete} />
                             </motion.div>
-
                         </div>
                     )}
 
