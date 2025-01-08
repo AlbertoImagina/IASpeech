@@ -1,7 +1,8 @@
 
 import { CheckCircle, XCircle } from 'lucide-react';
 import { FaAward } from "react-icons/fa";
-import { Flex, Text, useColorMode } from "@chakra-ui/react";
+import { Flex, Text, Button, useColorMode } from "@chakra-ui/react";
+import { useDataContext } from "../context/data.context";
 
 interface SpeechEvaluationProps {
   puntuacion: number,
@@ -10,16 +11,17 @@ interface SpeechEvaluationProps {
 
 export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
   const { colorMode } = useColorMode()
-  
+  const { setStep } = useDataContext();
+
   return (
-    <Flex 
-    w='full' 
-    my={8}
-    direction='column'
+    <Flex
+      w='full'
+      my={8}
+      direction='column'
     >
       <Flex
-      direction='column'
-      textAlign='center'
+        direction='column'
+        textAlign='center'
       >
         <FaAward size={48} className="mx-auto text-indigo-900 mb-4" color={'#A12DFF'} />
         <Text
@@ -33,20 +35,20 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
           fontSize="18px"
           marginBottom={6}
           color="text"
-          >
+        >
           Detalles de tus respuestas y como lo has hecho:
         </Text>
       </Flex>
 
-      <Flex 
-      direction='column'
-      position='relative' 
-      pt={1}
+      <Flex
+        direction='column'
+        position='relative'
+        pt={1}
       >
-        <Flex 
-        align='center' 
-        justify='space-between' 
-        mb='2'
+        <Flex
+          align='center'
+          justify='space-between'
+          mb='2'
         >
           <Text
             fontSize="18px"
@@ -54,10 +56,10 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
           >
             Puntuación total
           </Text>
-          <Text 
-          fontSize='3xl' 
-          fontWeight='bold' 
-          layerStyle='textGradient'          
+          <Text
+            fontSize='3xl'
+            fontWeight='bold'
+            layerStyle='textGradient'
           >
             {data.puntuacion}%
           </Text>
@@ -70,9 +72,9 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
         </Flex>
       </Flex>
 
-      <Flex 
-      my={4}
-      direction='column'
+      <Flex
+        my={4}
+        direction='column'
       >
         <Text
           fontSize="18px"
@@ -83,7 +85,7 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
         {data.evaluacion.map((item, index) => {
           return (
             <Flex
-            my={2}
+              my={2}
               key={index}
               // className={`flex items-start space-x-3 p-4 rounded-xl transition-all duration-300 
               //   ${item ? 'bg-green-50' : 'bg-red-50'}
@@ -104,6 +106,18 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
             </Flex>
           );
         })}
+      </Flex>
+      <Flex
+        justifyContent='center'
+        mt='20px'
+      >
+        <Button
+          layerStyle={'buttonGradient'}
+          color='buttonIcon'
+          onClick={() => setStep(1)}
+        >
+          Volver a intentarlo
+        </Button>
       </Flex>
     </Flex>
   );
