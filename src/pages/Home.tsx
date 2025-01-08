@@ -11,14 +11,15 @@ import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
 import { useToast } from "@chakra-ui/react";
 import Header from "../components/Header";
+import { useDataContext } from "../context/data.context";
 
 function Home() {
-    const [step, setStep] = useState(0);
     const bgColor = useColorModeValue('#FFFFFF', '#1D222D');
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
+    const {step, setStep} = useDataContext();
     const toast = useToast();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {

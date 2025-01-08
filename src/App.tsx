@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Users } from "./types/Users";
 import { NavigateFunction } from "react-router-dom";
 import { AuthContext } from "./context/auth.context";
+import { DataContext } from "./context/data.context";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "./ui/theme";
 
@@ -25,6 +26,7 @@ function App () {
   })
 
   const [auth, setAuth] = useState<boolean>(localStorage?.getItem("auth") === "true" ? true : false)
+  const [step, setStep] = useState<number>(0)
 
   const logout = (navigate: NavigateFunction) => {
     localStorage.removeItem("user")
@@ -48,9 +50,11 @@ function App () {
   return (
     <ChakraProvider theme={theme}>
       <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
+        <DataContext.Provider value={{ step, setStep }}>
         <BrowserRouter>
           <RuterController />
         </BrowserRouter>
+        </DataContext.Provider>
       </AuthContext.Provider>
     </ChakraProvider>
   );
