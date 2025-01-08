@@ -5,7 +5,7 @@ import { SpeechEvaluation } from "../components/SpeechEvaluation";
 import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
-import { Text, OrderedList, ListItem } from "@chakra-ui/react";
+import { Text, OrderedList, ListItem, Box, Flex } from "@chakra-ui/react";
 import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
@@ -73,14 +73,32 @@ function Home() {
 
     return (
         <>
-            <Header/>
+            <Header />
 
-            <main className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 h-full dark:bg-black">
-                <StepIndicator currentStep={step} />
+            <Box
+                maxW='7xl'
+                mx='auto'
+                px={4}
+                py={8}
+                h='full'
+            >
+                <StepIndicator
+                    currentStep={step}
+                />
 
-                <div className="flex flex-col items-center space-y-8">
+                <Flex
+                    direction='column'
+                    align='center'
+                    my={8}
+                >
                     {step === 0 && !isLoading && (
-                        <div className="w-full max-w-2xl rounded-2xl p-12" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
+                        <Flex
+                            w='full'
+                            maxWidth='3xl'
+                            rounded='2xl'
+                            justify='center'
+                            p={12}
+                            style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                             <motion.div
                                 initial={{ opacity: 0, translateX: -50 }}
                                 animate={{ opacity: 1, translateX: 0 }}
@@ -89,7 +107,7 @@ function Home() {
                                 <WebsiteAnalyzer
                                     onAnalysisComplete={handleAnalysisComplete} />
                             </motion.div>
-                        </div>
+                        </Flex>
                     )}
 
 
@@ -106,33 +124,51 @@ function Home() {
 
 
                     {step === 1 && !isLoading && (
-                        <motion.div className="w-full flex flex-col items-center space-y-6"
-                            initial={{ opacity: 0, translateX: 50 }}
-                            animate={{ opacity: 1, translateX: 0 }}
-                            transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+                        <Box
+                            w='full'
+                            maxW='3xl'
+                            flexDirection='column'
+                            alignItems='center'
+                            my={6}
                         >
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
-                                <Text
-                                    fontSize="20px"
-                                    marginBottom={6}
-                                    color="text"
-                                >Puntos clave:</Text>
-                                <OrderedList>
-                                    {keyPoints.map((point, index) => (
-                                        <ListItem
-                                            key={index}
-                                            color="text"
-                                        >
-                                            {point}
-                                        </ListItem>
-                                    ))}
-                                </OrderedList>
-                            </div>
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
-                                <VoiceRecorder
-                                    onRecordingComplete={handleRecordingComplete} />
-                            </div>
-                        </motion.div>
+                            <motion.div
+                                initial={{ opacity: 0, translateX: 50 }}
+                                animate={{ opacity: 1, translateX: 0 }}
+                                transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+                            >
+                                <Flex
+                                    direction='column'
+                                    w='full'
+                                    rounded='2xl'
+                                    p={6}
+                                    my={6}
+                                    style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
+                                    <Text
+                                        fontSize="20px"
+                                        marginBottom={6}
+                                        color="text"
+                                    >Puntos clave:</Text>
+                                    <OrderedList>
+                                        {keyPoints.map((point, index) => (
+                                            <ListItem
+                                                key={index}
+                                                color="text"
+                                            >
+                                                {point}
+                                            </ListItem>
+                                        ))}
+                                    </OrderedList>
+                                </Flex>
+                                <Flex
+                                    w='full'
+                                    rounded='2xl'
+                                    p={6}
+                                    style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
+                                    <VoiceRecorder
+                                        onRecordingComplete={handleRecordingComplete} />
+                                </Flex>
+                            </motion.div>
+                        </Box>
                     )}
 
 
@@ -149,8 +185,8 @@ function Home() {
                             <SpeechEvaluation data={data} />
                         </motion.div>
                     )}
-                </div>
-            </main >
+                </Flex>
+            </Box>
         </>
     );
 }

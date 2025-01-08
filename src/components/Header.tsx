@@ -1,7 +1,7 @@
 import { Button, Flex } from "@chakra-ui/react"
 import { Link, useNavigate } from "react-router-dom"
-import SwitchTheme from "./SwitchTheme"
 import { useAuthContext } from "../context/auth.context";
+import SwitchTheme from "./SwitchTheme"
 import { useDataContext } from "../context/data.context";
 
 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
-import { Flex, Input, Text, Button } from '@chakra-ui/react';
+import { Flex, Input, Text, Button, Spinner } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
 
 interface WebsiteAnalyzerProps {
@@ -32,55 +32,80 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   };
 
   return (
-    <Flex flexDirection='column'>
-      <div className="flex items-center justify-center mb-8">
-        <Icon as={TfiWorld} w={10} h={10} color='icon' />
-      </div>
-      <Text
-        fontSize="20px"
-        marginBottom={6}
-        textAlign="center"
-        layerStyle="textGradient"
-        fontWeight="semibold"
+    <>
+      <Flex
+        direction='column'
       >
-        Introduce la URL para entrenar
-      </Text>
-      <form onSubmit={handleAnalyze} className="space-y-4">
         <Flex
-          align="center"
+          align='center'
+          justify='center'
+          mb={8}
         >
-          <Input
-            type='url'
-            py={6}
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            placeholder='https://ejemplo.com'
-            required
+          <Icon
+            as={TfiWorld}
+            w={10}
+            h={10}
+            color='icon'
           />
-          <Button
-            type="submit"
-            disabled={loading}
-            layerStyle="buttonGradient"
-            color='buttonIcon'
-            p={6}
-            ml={2}
-          >
-            <Search
-              size={25}
-
-            />
-          </Button>
         </Flex>
-      </form>
+        <Text
+          fontSize="20px"
+          marginBottom={6}
+          textAlign="center"
+          layerStyle="textGradient"
+          fontWeight="semibold"
+        >
+          Introduce la URL para entrenar
+        </Text>
+        <form onSubmit={handleAnalyze} className="space-y-4">
+          <Flex
+            align="center"
+          >
+            <Input
+              type='url'
+              py={6}
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder='https://ejemplo.com'
+              required
+            />
+            <Button
+              type="submit"
+              disabled={loading}
+              layerStyle="buttonGradient"
+              color='buttonIcon'
+              p={6}
+              ml={2}
+            >
+              <Search
+                size={25}
 
-      {loading && (
-        <div className="mt-8 text-center">
-          <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-[#A12DFF] border-t-transparent"></div>
-          <Text
-            layerStyle="textGradient"
-          >Analizando contenido...</Text>
-        </div>
-      )}
-    </Flex>
+              />
+            </Button>
+          </Flex>
+        </form>
+
+        {loading && (
+          <Flex
+            mt={8}
+            textAlign='center'
+            direction='column'
+            justify='center'
+            align='center'
+          >
+            <Spinner
+              thickness='4px'
+              speed='0.65s'
+              color='icon'
+              size='lg'
+              my={6}
+            />
+            <Text
+              layerStyle="textGradient"
+            >Analizando contenido...</Text>
+          </Flex>
+        )}
+      </Flex>
+    </>
   );
 }
