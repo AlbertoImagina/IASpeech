@@ -7,7 +7,12 @@ function SwitchTheme() {
 
     return (
         <>
-            <Button mr='10px' onClick={toggleColorMode}> {colorMode === 'light' ? <FiSun /> : <FiMoon />}</Button>
+            <Button
+                mr='10px'
+                onClick={toggleColorMode}
+            >
+                {colorMode === 'light' ? <FiMoon /> : <FiSun />}
+            </Button>
         </>
     )
 }
