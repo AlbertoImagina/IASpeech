@@ -6,7 +6,7 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { useAuthContext } from "../context/auth.context";
-import { Button, Flex } from "@chakra-ui/react";
+import { Button, Flex, Text, OrderedList, ListItem } from "@chakra-ui/react";
 import SwitchTheme from "../components/SwitchTheme";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -129,20 +129,15 @@ function Home() {
                                 scale: { type: "spring", visualDuration: 0.7, bounce: 0.5 },
                             }}
                         >
-                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
-                                <h2 className="text-xl font-semibold mb-4 text-indigo-900">Puntos clave:</h2>
-                                <ul className="space-y-3">
+                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
+                                <Text fontSize="20px" marginBottom={6}>Puntos clave:</Text>
+                                <OrderedList>
                                     {keyPoints.map((point, index) => (
-                                        <li key={index} className="flex items-start space-x-3">
-                                            <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center rounded-full bg-indigo-100 text-indigo-600 text-sm font-medium">
-                                                {index + 1}
-                                            </span>
-                                            <span className="text-gray-700">{point}</span>
-                                        </li>
+                                        <ListItem key={index}>{point}</ListItem>
                                     ))}
-                                </ul>
+                                </OrderedList>
                             </div>
-                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+                            <div className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}>
                                 <VoiceRecorder
                                     onRecordingComplete={handleRecordingComplete} />
                             </div>
@@ -152,7 +147,7 @@ function Home() {
 
                     {step === 3 && evaluation && (
                         <motion.div
-                            className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6"
+                            className="w-full max-w-2xl bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "0 10px 30px rgba(0, 0, 0, 0.5)", }}
                             initial={{ opacity: 0, scale: 0 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{

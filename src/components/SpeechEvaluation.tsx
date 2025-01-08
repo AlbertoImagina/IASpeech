@@ -1,25 +1,25 @@
 
 import { CheckCircle, XCircle } from 'lucide-react';
 import { FaAward } from "react-icons/fa";
+import { Text } from "@chakra-ui/react";
 
 interface SpeechEvaluationProps {
   puntuacion: number,
   evaluacion: string[]
 }
 
-export function SpeechEvaluation({ data }: {data : SpeechEvaluationProps}) {
+export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
   return (
     <div className="w-full space-y-8">
       <div className="text-center">
-
-        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" />
-        <h2 className="text-2xl font-bold text-indigo-800 mb-2">Evaluación de discurso</h2>
-        <p className="text-gray-600">Detalles de tus respuestas y como lo has hecho:</p>
+        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" color={'#6645E7'}/>
+        <Text fontSize="20px" marginBottom={6}>Evaluación de discurso</Text>
+        <Text fontSize="18px" marginBottom={6}>Detalles de tus respuestas y como lo has hecho:</Text>
       </div>
-      
+
       <div className="relative pt-1">
         <div className="flex items-center justify-between mb-2">
-          <span className="text-lg font-semibold text-indigo-900">Puntuación total</span>
+          <Text fontSize="18px">Puntuación total</Text>
           <span className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {data.puntuacion}%
           </span>
@@ -33,15 +33,13 @@ export function SpeechEvaluation({ data }: {data : SpeechEvaluationProps}) {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold text-indigo-900">Claves usadas:</h3>
+        <Text fontSize="18px">Claves usadas:</Text>
         {data.evaluacion.map((item, index) => {
-          
           return (
             <div
               key={index}
-              className={`flex items-start space-x-3 p-4 rounded-xl transition-all duration-300 ${
-                item ? 'bg-green-50' : 'bg-red-50'
-              }`}
+              className={`flex items-start space-x-3 p-4 rounded-xl transition-all duration-300 ${item ? 'bg-green-50' : 'bg-red-50'
+                }`}
             >
               {item ? (
                 <CheckCircle className="flex-shrink-0 text-green-500 mt-0.5" size={20} />
