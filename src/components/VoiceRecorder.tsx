@@ -90,7 +90,7 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         )}
       </div>
 
-      <div className="relative h-[120px] rounded-xl overflow-hidden shadow-inner" style={{backgroundColor: 'backgroundModal', borderColor:"disabled", border:"1px solid"}}>
+      <div className="relative h-[120px] rounded-xl overflow-hidden shadow-inner" style={{backgroundColor: 'transparent', borderColor:"disabled", border:"1px solid"}}>
         <div ref={waveformRef} className="absolute inset-0" />
         <canvas
           ref={canvasRef}

@@ -2,7 +2,7 @@ import { Flex, Text, Progress } from "@chakra-ui/react"
 import { useColorModeValue } from '@chakra-ui/react';
 
 const ModalCorrectSpeech = () => {
-    const bgColor = useColorModeValue('buttonIcon', 'backgroundModal');
+    const bgColor = useColorModeValue('#FFFFFF', '#1D222D');
 
     return (
         <Flex

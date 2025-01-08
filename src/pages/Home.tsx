@@ -17,7 +17,7 @@ import { useToast } from "@chakra-ui/react";
 
 function Home() {
     const [step, setStep] = useState(0);
-    const bgColor = useColorModeValue('buttonIcon', 'backgroundModal');
+    const bgColor = useColorModeValue('#FFFFFF', '#1D222D');
     const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
@@ -55,7 +55,7 @@ function Home() {
                 console.error("Error al enviar el discurso:", error);
                 setStep(1);
                 return toast({
-                    title: 'Error enviar voz',
+                    title: 'Error enviar audio',
                     description: 'El audio no pudo ser procesado correctamente, vuelva a intentarlo.',
                     status: 'error',
                 })
@@ -139,7 +139,7 @@ function Home() {
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                         >
-                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: "#1D222D", boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
+                            <div className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
                                 <Text
                                     fontSize="20px"
                                     marginBottom={6}
