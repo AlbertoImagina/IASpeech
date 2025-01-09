@@ -75,6 +75,7 @@ function Home() {
             h='100vh'
             flexDirection='column'
             justifyItems={{ sm: 'center', md: 'normal' }}
+            align={{sm:'center', md: 'normal'}}
         >
             <motion.div
                 initial={{ opacity: 0 }}
