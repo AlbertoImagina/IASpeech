@@ -26,20 +26,22 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
     { title: 'Paso 2', description: 'Grabar discurso' },
     { title: 'Paso 3', description: 'Evaluación' },
   ]
-  const sm = useBreakpointValue({ sm: true, lg: false, md:false });
+  const sm = useBreakpointValue({ sm: true, lg: false, md: false });
 
   return (
-    <Stepper 
+    <Stepper
       orientation={sm ? 'vertical' : 'horizontal'}
-      size={{sm: 'sm', md:'lg'}}
-      index={currentStep} 
-      mb='50px' 
+      size={{ sm: 'sm', md: 'lg' }}
+      index={currentStep}
+      mb='50px'
       px="20px"
       colorScheme="purple"
-      >
+    >
       {steps.map((step, index) => (
         <Step key={index}>
           <StepIndicatorChakraUi
+          h={{sm:'40px'}}
+          w={{sm:'40px'}}
             color={currentStep === index ? 'icon' : 'disabled'}
             borderColor={currentStep === index ? 'icon' : 'disabled'}
           >
@@ -47,26 +49,28 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
               complete={<StepIcon />}
               incomplete={
                 index === 0 ? <TfiWorld /> :
-                index === 1 ? <FaMicrophone /> :
-                index === 2 ? <FaAward /> :
-                <StepNumber />
+                  index === 1 ? <FaMicrophone /> :
+                    index === 2 ? <FaAward /> :
+                      <StepNumber />
               }
               active={
                 index === 0 ? <TfiWorld /> :
-                index === 1 ? <FaMicrophone /> :
-                index === 2 ? <FaAward /> :
-                <StepNumber />
+                  index === 1 ? <FaMicrophone /> :
+                    index === 2 ? <FaAward /> :
+                      <StepNumber />
               }
             />
           </StepIndicatorChakraUi>
 
           <Box flexShrink='0'>
             <StepTitle
+              fontSize={{ sm: '18px' }}
               color={currentStep === index ? 'icon' : 'disabled'}
             >
               {step.title}
             </StepTitle>
             <StepDescription
+              fontSize={{ sm: '16px' }}
               color={currentStep === index ? 'icon' : 'disabled'}
             >
               {step.description}
@@ -74,6 +78,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
           </Box>
 
           <StepSeparator
+            display={{sm:'none', md: 'block'}}
             bgGradient={currentStep > index ? "linear(to-l, #A052EE, #6645E7)" : "disabled"}
           />
         </Step>
