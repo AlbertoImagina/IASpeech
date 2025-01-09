@@ -6,12 +6,12 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { Text, OrderedList, ListItem, Box, Flex } from "@chakra-ui/react";
-import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
 import { useToast } from "@chakra-ui/react";
-import Header from "../components/Header";
 import { useDataContext } from "../context/data.context";
+import ModalCorrectSpeech from "../components/ModalCorrectSpeech";
+import Header from "../components/Header";
 
 function Home() {
     const bgColor = useColorModeValue('#FFFFFF', '#1D222D');

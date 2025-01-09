@@ -1,4 +1,3 @@
-import React from 'react';
 import { Play, Download } from 'lucide-react';
 
 interface AudioControlsProps {

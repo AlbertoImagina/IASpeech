@@ -48,4 +48,4 @@ const ModalCorrectSpeech = ({title,subTitle}:ModalCorrectSpeechProps) => {
     )
 }
 
-export { ModalCorrectSpeech }
+export default ModalCorrectSpeech 
