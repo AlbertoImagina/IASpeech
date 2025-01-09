@@ -26,6 +26,8 @@ const theme = extendTheme({
         light: '#000000',
         _dark: '#FFFFFF',
       },
+      text_green: '#F0FDF4',
+      border_green: '#3C8557',
       icon: '#A12DFF',
       disabled: '#9CA3AF',
       backgroundModal: {

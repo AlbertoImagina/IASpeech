@@ -1,7 +1,7 @@
 
 import { CheckCircle, XCircle } from 'lucide-react';
 import { FaAward } from "react-icons/fa";
-import { Flex, Text, Button, useColorMode } from "@chakra-ui/react";
+import { Flex, Text, Button, Icon, useColorMode } from "@chakra-ui/react";
 import { useDataContext } from "../context/data.context";
 
 interface SpeechEvaluationProps {
@@ -16,14 +16,21 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
   return (
     <Flex
       w='full'
-      my={8}
+      my={4}
       direction='column'
     >
       <Flex
         direction='column'
-        textAlign='center'
+        align='center'
       >
-        <FaAward size={48} className="mx-auto text-indigo-900 mb-4" color={'#A12DFF'} />
+        <Icon
+          as={FaAward}
+          w={10}
+          h={10}
+          mb={4}
+          color='icon'
+        />
+
         <Text
           fontSize="20px"
           marginBottom={6}
@@ -64,7 +71,13 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
             {data.puntuacion}%
           </Text>
         </Flex>
-        <Flex className={`w-full h-3 rounded-full overflow-hidden ${colorMode === 'dark' ? 'bg-[#535353]' : 'bg-gray-200'}`}>
+        <Flex
+          w='full'
+          h='3'
+          overflow='hidden'
+          backgroundColor={colorMode === 'dark' ? '#535353' : 'gray.200'}
+          rounded='full'
+          >
           <Flex
             className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all duration-1000"
             style={{ width: `${data.puntuacion}%` }}
@@ -87,20 +100,21 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
             <Flex
               my={2}
               key={index}
-              // className={`flex items-start space-x-3 p-4 rounded-xl transition-all duration-300 
-              //   ${item ? 'bg-green-50' : 'bg-red-50'}
-              //   `}
-              className={`flex items-start space-x-3 p-4 rounded-xl transition-all duration-300 border-[1px]
-                ${colorMode === 'dark' ? 'bg-transparent' : 'bg-green-50'}
-                ${colorMode === 'dark' ? 'border-[#3C8557]' : 'border-transparent'}
-                `}
+              p='4'
+              rounded='xl'
+              gap='10px'
+              border='1px solid'
+              borderColor='border_green'
+              color={colorMode === 'dark' ? 'bg-transparent' : 'text_green'}
             >
               {item ? (
                 <CheckCircle className={`flex-shrink-0 ${colorMode === 'dark' ? 'text-[#40DE7B]' : 'text-green-500'} mt-0.5`} size={20} />
               ) : (
                 <XCircle className={`flex-shrink-0 ${colorMode === 'dark' ? 'text-red-500' : 'text-red-500'} mt-0.5`} size={20} />
               )}
-              <Text className={`${colorMode === 'dark' ? 'text-[#40DE7B]' : 'text-green-500'}`}>
+              <Text
+                color={colorMode === 'dark' ? '#40DE7B' : 'green.500'}
+              >
                 {item}
               </Text>
             </Flex>

@@ -42,7 +42,7 @@ const ModalCorrectSpeech = ({title,subTitle}:ModalCorrectSpeechProps) => {
                 isIndeterminate
                 w="80%"
                 mt="15px"
-                color='red'
+                colorScheme='purple'
             />
         </Flex>
     )
