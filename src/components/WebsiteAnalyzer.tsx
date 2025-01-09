@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
-import { Flex, Input, Text, Button, Spinner } from '@chakra-ui/react';
+import { Flex, Input, Text, Button } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
+import { motion } from "motion/react"
+import { ModalCorrectSpeech } from './ModalCorrectSpeech';
+
 
 interface WebsiteAnalyzerProps {
   onAnalysisComplete: (keyPoints: string[]) => void;
@@ -28,7 +31,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
       ];
       onAnalysisComplete(mockKeyPoints);
       setLoading(false);
-    }, 2000);
+    }, 4000);
   };
 
   return (
@@ -55,7 +58,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
           layerStyle="textGradient"
           fontWeight="semibold"
         >
-          Introduce la URL para entrenar
+          Introduce la URL para empezar
         </Text>
         <form onSubmit={handleAnalyze} className="space-y-4">
           <Flex
@@ -84,28 +87,19 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             </Button>
           </Flex>
         </form>
-
-        {loading && (
-          <Flex
-            mt={8}
-            textAlign='center'
-            direction='column'
-            justify='center'
-            align='center'
-          >
-            <Spinner
-              thickness='4px'
-              speed='0.65s'
-              color='icon'
-              size='lg'
-              my={6}
-            />
-            <Text
-              layerStyle="textGradient"
-            >Analizando contenido...</Text>
-          </Flex>
-        )}
       </Flex>
+
+      {loading && (
+
+        <motion.div
+          style={{marginTop: '20px'}}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1, translateX: 0 }}
+          transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+        >
+          <ModalCorrectSpeech title="Analizando web" subTitle="Un segundo por favor..." />
+        </motion.div>
+      )}
     </>
   );
 }
