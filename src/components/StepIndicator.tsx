@@ -28,7 +28,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
 
   return (
     <Stepper 
-      size='lg'
+      size={{base: 'lg', sm:'sm', lg:'lg'}}
       index={currentStep} 
       mb='50px' 
       px="20px"

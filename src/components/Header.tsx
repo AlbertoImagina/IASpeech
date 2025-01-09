@@ -13,6 +13,7 @@ function Header() {
     return (
         <header className="dark:bg-black">
             <Flex
+                direction={{base: 'row', lg:'row' ,sm: 'column'}}
                 fontSize='24px'
                 mx='auto'
                 px={4}
@@ -25,6 +26,7 @@ function Header() {
                     fontSize='2xl'
                     fontWeight='700'
                     layerStyle='textGradient'
+                    mb={{base: '0px', sm:'8px', lg:'0px'}}
                 >
                     <Link to=''>Speech Trainer AI</Link>
                 </Flex>
