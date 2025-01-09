@@ -72,7 +72,7 @@ function Home() {
 
     return (
         <>
-            <Header />
+
             <Box
                 maxW='7xl'
                 mx='auto'
@@ -80,21 +80,31 @@ function Home() {
                 py={8}
                 h='full'
             >
-                <Box
-                justifyItems={{sm:'center', md:'center', lg:'normal'}}
-                w='100%'
+                <motion.div
+                    initial={{ opacity: 0}}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2, delay: 0.8, ease: "fade" }}
+                    style={{ minWidth: '500px' }}
                 >
-                <StepIndicator
-                    currentStep={step}
-                />
-                </Box>
+                    <Header />
+                    <Box
+                        justifyItems={{ sm: 'center', md: 'center', lg: 'normal' }}
+                        w='100%'
+                        mt={10}
+                    >
+                        <StepIndicator
+                            currentStep={step}
+                        />
+                    </Box>
+                </motion.div>
+
 
                 {isLoading ? (
                     <Flex
                         justifyContent='center'
                     >
                         <motion.div
-                            initial={{ opacity: 0, translateX: -50 }}
+                            initial={{ opacity: 0, translateX: 50 }}
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
                             style={{ minWidth: '500px' }}
@@ -117,7 +127,7 @@ function Home() {
                                 p={12}
                                 style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                                 <motion.div
-                                    initial={{ opacity: 0, translateX: -50 }}
+                                    initial={{ opacity: 0, translateX: 50 }}
                                     animate={{ opacity: 1, translateX: 0 }}
                                     transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
                                     style={{ width: '100%' }}

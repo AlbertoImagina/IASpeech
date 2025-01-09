@@ -17,7 +17,7 @@ function Header() {
                 fontSize='24px'
                 mx='auto'
                 px={4}
-                py={4}
+                mb={20}
                 align='center'
                 justify='space-between'
             >
