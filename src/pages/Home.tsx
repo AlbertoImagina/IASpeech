@@ -6,7 +6,7 @@ import { StepIndicator } from "../components/StepIndicator";
 import { KeyPoint, EvaluationResult } from "../types/EvaluationResult";
 import { enviarVoz } from "../middleware/middlewares";
 import { Text, OrderedList, ListItem, Box, Flex } from "@chakra-ui/react";
-
+import { ModalCorrectSpeech } from "../components/ModalCorrectSpeech";
 import { motion } from "motion/react"
 import { useColorModeValue } from '@chakra-ui/react';
 import { useToast } from "@chakra-ui/react";
@@ -103,13 +103,23 @@ function Home() {
                                 initial={{ opacity: 0, translateX: -50 }}
                                 animate={{ opacity: 1, translateX: 0 }}
                                 transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
-                                style={{width:'100%'}}
+                                style={{ width: '100%' }}
                             >
                                 <WebsiteAnalyzer
                                     onAnalysisComplete={handleAnalysisComplete}
                                 />
                             </motion.div>
                         </Flex>
+                    )}
+
+                    {isLoading && (
+                        <motion.div
+                            initial={{ opacity: 0, translateX: -50 }}
+                            animate={{ opacity: 1, translateX: 0 }}
+                            transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
+                        >
+                            <ModalCorrectSpeech title="Enviando tu discurso para corregir" subTitle="Un segundo por favor..." />
+                        </motion.div>
                     )}
 
 
