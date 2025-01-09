@@ -73,7 +73,6 @@ function Home() {
     return (
         <Flex
             h='100vh'
-            w='100vw'
             flexDirection='column'
             justifyItems={{ sm: 'center', md: 'normal' }}
         >
