@@ -27,6 +27,7 @@ function App() {
 
   const [auth, setAuth] = useState<boolean>(localStorage?.getItem("auth") === "true" ? true : false)
   const [step, setStep] = useState<number>(0)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const logout = (navigate: NavigateFunction) => {
     localStorage.removeItem("user")
@@ -50,7 +51,7 @@ function App() {
   return (
     <ChakraProvider theme={theme}>
       <AuthContext.Provider value={{ user, setUser, auth, setAuth, logout }}>
-        <DataContext.Provider value={{ step, setStep }}>
+        <DataContext.Provider value={{ step, setStep, isLoading, setIsLoading }}>
           <BrowserRouter>
             <RuterController />
           </BrowserRouter>

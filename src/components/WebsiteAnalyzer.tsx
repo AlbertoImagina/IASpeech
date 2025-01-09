@@ -3,9 +3,7 @@ import { Search } from 'lucide-react';
 import { TfiWorld } from "react-icons/tfi";
 import { Flex, Input, Text, Button } from '@chakra-ui/react';
 import { Icon } from '@chakra-ui/react'
-import { motion } from "motion/react"
-import { ModalCorrectSpeech } from './ModalCorrectSpeech';
-
+import { useDataContext } from '../context/data.context';
 
 interface WebsiteAnalyzerProps {
   onAnalysisComplete: (keyPoints: string[]) => void;
@@ -15,12 +13,12 @@ interface WebsiteAnalyzerProps {
 
 export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
   const [url, setUrl] = useState('');
-  const [loading, setLoading] = useState(false);
+  const {isLoading, setIsLoading} = useDataContext();
 
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
+    setIsLoading(true);
 
     setTimeout(() => {
       const mockKeyPoints = [
@@ -30,12 +28,11 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
         "Integración con las herramientas populares",
       ];
       onAnalysisComplete(mockKeyPoints);
-      setLoading(false);
+      setIsLoading(false);
     }, 4000);
   };
 
   return (
-    <>
       <Flex
         direction='column'
       >
@@ -74,7 +71,7 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
             />
             <Button
               type="submit"
-              disabled={loading}
+              disabled={isLoading}
               layerStyle="buttonGradient"
               color='buttonIcon'
               p={6}
@@ -88,18 +85,5 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
           </Flex>
         </form>
       </Flex>
-
-      {loading && (
-
-        <motion.div
-          style={{marginTop: '20px'}}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, translateX: 0 }}
-          transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
-        >
-          <ModalCorrectSpeech title="Analizando web" subTitle="Un segundo por favor..." />
-        </motion.div>
-      )}
-    </>
   );
 }

@@ -15,11 +15,10 @@ import { useDataContext } from "../context/data.context";
 
 function Home() {
     const bgColor = useColorModeValue('#FFFFFF', '#1D222D');
-    const [isLoading, setIsLoading] = useState(false);
     const [keyPoints, setKeyPoints] = useState<KeyPoint[]>([]);
     const [evaluation, setEvaluation] = useState<EvaluationResult | null>(null);
     const [data, setData] = useState<any>(null);
-    const { step, setStep } = useDataContext();
+    const { step, setStep, isLoading, setIsLoading } = useDataContext();
     const toast = useToast();
 
     const handleAnalysisComplete = (points: KeyPoint[]) => {
@@ -93,8 +92,9 @@ function Home() {
                             initial={{ opacity: 0, translateX: -50 }}
                             animate={{ opacity: 1, translateX: 0 }}
                             transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
+                            style={{ minWidth: '500px' }}
                         >
-                            <ModalCorrectSpeech title="Enviando tu discurso para corregir" subTitle="Un segundo por favor..." />
+                            <ModalCorrectSpeech title={step === 0 ? "Analizando web" : "Enviando tu discurso para corregir"} subTitle="Un segundo por favor..." />
                         </motion.div>
                     </Flex>
                 ) : (
