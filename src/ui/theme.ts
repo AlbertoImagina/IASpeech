@@ -16,21 +16,21 @@ const theme = extendTheme({
     },
     buttonGradient: {
       bgGradient: "linear(to-r, #6366F1 0%, #A855F7 100%)",
-      textColor: 'white'
+      textColor: '#FFFFFF'
     }
   },
   semanticTokens: {
     colors: {
-      error: 'red.500',
+      error: '#F56565',
       text: {
-        light: 'black',
-        _dark: 'white',
+        light: '#000000',
+        _dark: '#FFFFFF',
       },
       icon: '#A12DFF',
       disabled: '#9CA3AF',
       backgroundModal: {
-        light: '#1D222D',
-        _dark: 'red',
+        light: '#FFFFFF',
+        _dark: '#1D222D',
       },
       purple: {
         100: "#A052EE",
