@@ -79,18 +79,19 @@ function Home() {
                 px={4}
                 py={8}
                 h='full'
+                justifyItems={{ sm: 'center', md: 'normal' }}
             >
                 <motion.div
-                    initial={{ opacity: 0}}
+                    initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.2, delay: 0.8, ease: "fade" }}
-                    style={{ minWidth: '500px' }}
+                    style={{ minWidth: '500px', width:'100%' }}
                 >
                     <Header />
                     <Box
-                        justifyItems={{ sm: 'center', md: 'center', lg: 'normal' }}
                         w='100%'
                         mt={10}
+                        justifyItems={{sm:'center', md: "normal"}}
                     >
                         <StepIndicator
                             currentStep={step}
