@@ -23,13 +23,15 @@ const theme = extendTheme({
     colors: {
       error: 'red.500',
       text: {
-        default: 'black',
+        light: 'black',
         _dark: 'white',
       },
       icon: '#A12DFF',
       disabled: '#9CA3AF',
-      buttonIcon: 'white',
-      backgroundModal: '#1D222D',
+      backgroundModal: {
+        light: '#1D222D',
+        _dark: 'red',
+      },
       purple: {
         100: "#A052EE",
         200: "#9A4FEA", 

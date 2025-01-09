@@ -94,7 +94,7 @@ function Home() {
                             transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
                             style={{ minWidth: '500px' }}
                         >
-                            <ModalCorrectSpeech title={step === 0 ? "Analizando web" : "Enviando tu discurso para corregir"} subTitle="Un segundo por favor..." />
+                            <ModalCorrectSpeech title={step === 0 ? "Analizando web" : "Enviando tu discurso para corregir"} subTitle="Espere un momento..." />
                         </motion.div>
                     </Flex>
                 ) : (
