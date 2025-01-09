@@ -103,7 +103,7 @@ function Home() {
                                 initial={{ opacity: 0, translateX: -50 }}
                                 animate={{ opacity: 1, translateX: 0 }}
                                 transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
-                                style={{width:'full'}}
+                                style={{width:'100%'}}
                             >
                                 <WebsiteAnalyzer
                                     onAnalysisComplete={handleAnalysisComplete}
