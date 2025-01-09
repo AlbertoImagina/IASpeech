@@ -71,140 +71,136 @@ function Home() {
 
 
     return (
-        <>
-
-            <Box
-                maxW='7xl'
-                mx='auto'
-                px={4}
-                py={8}
-                h='full'
-                justifyItems={{ sm: 'center', md: 'normal' }}
+        <Flex
+            h='100vh'
+            w='100vw'
+            flexDirection='column'
+            justifyItems={{ sm: 'center', md: 'normal' }}
+        >
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2, delay: 0.8, ease: "fade" }}
+                style={{ minWidth: '500px', width: '100%' }}
             >
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.2, delay: 0.8, ease: "fade" }}
-                    style={{ minWidth: '500px', width:'100%' }}
+                <Header />
+                <Box
+                    w='100%'
+                    mt={10}
+                    justifyItems={{ sm: 'center', md: "normal" }}
                 >
-                    <Header />
-                    <Box
-                        w='100%'
-                        mt={10}
-                        justifyItems={{sm:'center', md: "normal"}}
+                    <StepIndicator
+                        currentStep={step}
+                    />
+                </Box>
+            </motion.div>
+
+
+            {isLoading ? (
+                <Flex
+                    justifyContent='center'
+                >
+                    <motion.div
+                        initial={{ opacity: 0, translateX: 50 }}
+                        animate={{ opacity: 1, translateX: 0 }}
+                        transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
+                        style={{ minWidth: '500px' }}
                     >
-                        <StepIndicator
-                            currentStep={step}
-                        />
-                    </Box>
-                </motion.div>
-
-
-                {isLoading ? (
-                    <Flex
-                        justifyContent='center'
-                    >
-                        <motion.div
-                            initial={{ opacity: 0, translateX: 50 }}
-                            animate={{ opacity: 1, translateX: 0 }}
-                            transition={{ duration: 0.2, delay: 0.5, ease: "circIn" }}
-                            style={{ minWidth: '500px' }}
-                        >
-                            <ModalCorrectSpeech title={step === 0 ? "Analizando web" : "Enviando tu discurso para corregir"} subTitle="Espere un momento..." />
-                        </motion.div>
-                    </Flex>
-                ) : (
-                    <Flex
-                        direction='column'
-                        align='center'
-                        my={8}
-                    >
-                        {step === 0 && (
-                            <Flex
-                                w='full'
-                                maxWidth='3xl'
-                                rounded='2xl'
-                                justify='center'
-                                p={12}
-                                style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
-                                <motion.div
-                                    initial={{ opacity: 0, translateX: 50 }}
-                                    animate={{ opacity: 1, translateX: 0 }}
-                                    transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
-                                    style={{ width: '100%' }}
-                                >
-                                    <WebsiteAnalyzer
-                                        onAnalysisComplete={handleAnalysisComplete}
-                                    />
-                                </motion.div>
-                            </Flex>
-                        )}
-
-                        {step === 1 && (
-                            <Box
-                                w='full'
-                                maxW='3xl'
-                                flexDirection='column'
-                                alignItems='center'
-                                my={6}
-                            >
-                                <motion.div
-                                    initial={{ opacity: 0, translateX: 50 }}
-                                    animate={{ opacity: 1, translateX: 0 }}
-                                    transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
-                                >
-                                    <Flex
-                                        direction='column'
-                                        w='full'
-                                        rounded='2xl'
-                                        p={6}
-                                        my={6}
-                                        style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
-                                        <Text
-                                            fontSize="20px"
-                                            marginBottom={6}
-                                            color="text"
-                                        >Puntos clave:</Text>
-                                        <OrderedList>
-                                            {keyPoints.map((point, index) => (
-                                                <ListItem
-                                                    key={index}
-                                                    color="text"
-                                                >
-                                                    {point}
-                                                </ListItem>
-                                            ))}
-                                        </OrderedList>
-                                    </Flex>
-                                    <Flex
-                                        w='full'
-                                        rounded='2xl'
-                                        p={6}
-                                        style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
-                                        <VoiceRecorder
-                                            onRecordingComplete={handleRecordingComplete} />
-                                    </Flex>
-                                </motion.div>
-                            </Box>
-                        )}
-
-                        {step === 3 && (
+                        <ModalCorrectSpeech title={step === 0 ? "Analizando web" : "Enviando tu discurso para corregir"} subTitle="Espere un momento..." />
+                    </motion.div>
+                </Flex>
+            ) : (
+                <Flex
+                    direction='column'
+                    align='center'
+                    my={8}
+                >
+                    {step === 0 && (
+                        <Flex
+                            w='full'
+                            maxWidth='3xl'
+                            rounded='2xl'
+                            justify='center'
+                            p={12}
+                            style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                             <motion.div
-                                className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}
-                                initial={{ opacity: 0, scale: 0 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{
-                                    duration: 0.5,
-                                    scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
-                                }}
+                                initial={{ opacity: 0, translateX: 50 }}
+                                animate={{ opacity: 1, translateX: 0 }}
+                                transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+                                style={{ width: '100%' }}
                             >
-                                <SpeechEvaluation data={data} />
+                                <WebsiteAnalyzer
+                                    onAnalysisComplete={handleAnalysisComplete}
+                                />
                             </motion.div>
-                        )}
-                    </Flex>
-                )}
-            </Box>
-        </>
+                        </Flex>
+                    )}
+
+                    {step === 1 && (
+                        <Box
+                            w='full'
+                            maxW='3xl'
+                            flexDirection='column'
+                            alignItems='center'
+                            my={6}
+                        >
+                            <motion.div
+                                initial={{ opacity: 0, translateX: 50 }}
+                                animate={{ opacity: 1, translateX: 0 }}
+                                transition={{ duration: 0.2, delay: 0.5, ease: "linear" }}
+                            >
+                                <Flex
+                                    direction='column'
+                                    w='full'
+                                    rounded='2xl'
+                                    p={6}
+                                    my={6}
+                                    style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
+                                    <Text
+                                        fontSize="20px"
+                                        marginBottom={6}
+                                        color="text"
+                                    >Puntos clave:</Text>
+                                    <OrderedList>
+                                        {keyPoints.map((point, index) => (
+                                            <ListItem
+                                                key={index}
+                                                color="text"
+                                            >
+                                                {point}
+                                            </ListItem>
+                                        ))}
+                                    </OrderedList>
+                                </Flex>
+                                <Flex
+                                    w='full'
+                                    rounded='2xl'
+                                    p={6}
+                                    style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
+                                    <VoiceRecorder
+                                        onRecordingComplete={handleRecordingComplete} />
+                                </Flex>
+                            </motion.div>
+                        </Box>
+                    )}
+
+                    {step === 3 && (
+                        <motion.div
+                            className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}
+                            initial={{ opacity: 0, scale: 0 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                                duration: 0.5,
+                                scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+                            }}
+                        >
+                            <SpeechEvaluation data={data} />
+                        </motion.div>
+                    )}
+                </Flex>
+            )}
+        </Flex>
+
     );
 }
 

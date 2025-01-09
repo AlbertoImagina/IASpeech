@@ -16,8 +16,8 @@ function Header() {
                 direction={{ sm: 'column', md: 'row' }}
                 fontSize='24px'
                 mx='auto'
-                px={4}
-                mb={20}
+                p={4}
+                mb={10}
                 align='center'
                 justify='space-between'
             >
