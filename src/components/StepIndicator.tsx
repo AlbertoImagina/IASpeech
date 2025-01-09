@@ -12,7 +12,8 @@ import {
   StepSeparator,
   StepStatus,
   StepTitle,
-  Stepper
+  Stepper,
+  useBreakpointValue
 } from '@chakra-ui/react'
 
 interface StepIndicatorProps {
@@ -25,10 +26,12 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
     { title: 'Paso 2', description: 'Grabar discurso' },
     { title: 'Paso 3', description: 'Evaluación' },
   ]
+  const sm = useBreakpointValue({ sm: true, lg: false, md:false });
 
   return (
     <Stepper 
-      size={{base: 'lg', xs:'sm', lg:'lg'}}
+      orientation={sm ? 'vertical' : 'horizontal'}
+      size={{sm: 'sm', md:'lg'}}
       index={currentStep} 
       mb='50px' 
       px="20px"

@@ -6,9 +6,19 @@ const config: ThemeConfig = {
   useSystemColorMode: false,
 }
 
+const breakpoints = {
+  base: '200px',
+  sm: '220px',
+  md: '768px',
+  lg: '960px',
+  xl: '1200px',
+  '2xl': '1536px',
+}
+
 
 const theme = extendTheme({
   config,
+  breakpoints,
   layerStyles: {
     textGradient: {
       bgGradient:"linear(to-r, #4F46E5 0%, #9333EA 31.39%)",

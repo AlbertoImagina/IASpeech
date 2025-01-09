@@ -80,9 +80,14 @@ function Home() {
                 py={8}
                 h='full'
             >
+                <Box
+                justifyItems={{sm:'center', md:'center', lg:'normal'}}
+                w='100%'
+                >
                 <StepIndicator
                     currentStep={step}
                 />
+                </Box>
 
                 {isLoading ? (
                     <Flex
