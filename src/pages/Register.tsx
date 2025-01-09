@@ -253,14 +253,14 @@ function Register() {
             >
                 <Text
                     fontSize='14'
-                    layerStyle='textGradient'
+                    color='icon'
                     mt='10px'
                 >
                     ¿Ya tienes una cuenta?{' '}
                 </Text>
                 <Link
                     as={RouterLink}
-                    _hover={{ textDecoration: "underline" }}
+                    textDecoration='underline'
                     to="/"
                     layerStyle='textLink'
                     fontSize="12px"

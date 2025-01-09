@@ -142,14 +142,14 @@ function Login() {
             >
                 <Text
                     fontSize='14'
-                    layerStyle='textGradient'
+                    color='icon'
                     mt='10px'
                 >
                     ¿Aún no tienes una cuenta?{' '}
                 </Text>
                 <Link
                     as={RouterLink}
-                    _hover={{ textDecoration: "underline" }}
+                    textDecoration='underline'
                     to="/register"
                     fontSize='12px'
                     layerStyle='textLink'
