@@ -173,6 +173,7 @@ function Home() {
                                     w='full'
                                     rounded='2xl'
                                     p={6}
+                                    my={10}
                                     style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}>
                                     <VoiceRecorder
                                         onRecordingComplete={handleRecordingComplete} />
@@ -182,17 +183,23 @@ function Home() {
                     )}
 
                     {step === 3 && (
-                        <motion.div
-                            className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}
-                            initial={{ opacity: 0, scale: 0 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                                duration: 0.5,
-                                scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
-                            }}
+                        <Flex
+                            mb={10}
+                            w='100%'
+                            justifyContent='center'
                         >
-                            <SpeechEvaluation data={data} />
-                        </motion.div>
+                            <motion.div
+                                className="w-full max-w-2xl rounded-2xl shadow-xl p-6" style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}
+                                initial={{ opacity: 0, scale: 0 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{
+                                    duration: 0.5,
+                                    scale: { type: "spring", visualDuration: 0.4, bounce: 0 },
+                                }}
+                            >
+                                <SpeechEvaluation data={data} />
+                            </motion.div>
+                        </Flex>
                     )}
                 </Flex>
             )}
