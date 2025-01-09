@@ -113,7 +113,6 @@ export function SpeechEvaluation({ data }: { data: SpeechEvaluationProps }) {
       >
         <Button
           layerStyle={'buttonGradient'}
-          color='buttonIcon'
           onClick={() => setStep(1)}
         >
           Volver a intentarlo

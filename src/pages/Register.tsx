@@ -120,7 +120,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.name ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -139,7 +139,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.lastName ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -158,7 +158,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.email ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -177,7 +177,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.password ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -196,7 +196,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.confirmPassword ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -216,7 +216,7 @@ function Register() {
                             </Input>
                             <Text
                                 opacity={props.errors.phone ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -233,7 +233,6 @@ function Register() {
                                     id="register_button"
                                     type="submit"
                                     layerStyle='buttonGradient'
-                                    color="buttonIcon"
                                     isLoading={isLoading}
                                     w="100%"
                                 >

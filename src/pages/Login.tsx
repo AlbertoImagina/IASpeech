@@ -90,7 +90,7 @@ function Login() {
                             />
                             <Text
                                 opacity={props.errors.email ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -109,7 +109,7 @@ function Login() {
 
                             <Text
                                 opacity={props.errors.password ? 1 : 0}
-                                color="red.500"
+                                color="error"
                                 fontSize="12px"
                                 mt="3px"
                             >
@@ -121,7 +121,6 @@ function Login() {
                                     id='login_button'
                                     layerStyle='buttonGradient'
                                     p='5'
-                                    color='buttonIcon'
                                     type="submit"
                                     isLoading={isLoading}
                                 >

@@ -38,7 +38,6 @@ function Header() {
                         id="logout_button"
                         px="8"
                         layerStyle="buttonGradient"
-                        color="buttonIcon"
                         fontSize="18px"
                         onClick={() => logout(navigate)}
                     >

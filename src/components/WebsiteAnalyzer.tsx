@@ -73,7 +73,6 @@ export function WebsiteAnalyzer({ onAnalysisComplete }: WebsiteAnalyzerProps) {
               type="submit"
               disabled={isLoading}
               layerStyle="buttonGradient"
-              color='buttonIcon'
               p={6}
               ml={2}
             >

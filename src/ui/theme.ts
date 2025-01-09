@@ -16,7 +16,7 @@ const theme = extendTheme({
     },
     buttonGradient: {
       bgGradient: "linear(to-r, #6366F1 0%, #A855F7 100%)",
-      color: 'white'
+      textColor: 'white'
     }
   },
   semanticTokens: {
