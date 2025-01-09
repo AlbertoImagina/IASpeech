@@ -20,6 +20,7 @@ const ModalCorrectSpeech = ({title,subTitle}:ModalCorrectSpeechProps) => {
             rounded="2xl"
             shadow="xl"
             p="20"
+            mt={8}
             fontSize="20px"
             color="text"
             style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)", }}

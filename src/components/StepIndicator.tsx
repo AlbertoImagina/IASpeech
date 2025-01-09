@@ -34,7 +34,7 @@ export function StepIndicator({ currentStep }: StepIndicatorProps) {
       size={{ sm: 'sm', md: 'lg' }}
       index={currentStep}
       mb='50px'
-      px="20px"
+      px={20}
       colorScheme="purple"
     >
       {steps.map((step, index) => (

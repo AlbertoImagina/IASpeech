@@ -141,7 +141,6 @@ function Home() {
                             maxW='3xl'
                             flexDirection='column'
                             alignItems='center'
-                            my={6}
                         >
                             <motion.div
                                 initial={{ opacity: 0, translateX: 50 }}
@@ -153,7 +152,6 @@ function Home() {
                                     w='full'
                                     rounded='2xl'
                                     p={6}
-                                    my={6}
                                     style={{ backgroundColor: bgColor, boxShadow: "-10px 20px 25px -5px rgba(0, 0, 0, 0.10), 10px 8px 10px -6px rgba(0, 0, 0, 0.10)" }}>
                                     <Text
                                         fontSize="20px"
